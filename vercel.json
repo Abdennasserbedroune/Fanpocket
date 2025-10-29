@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "buildCommand": "npm run build",
+  "outputDirectory": "public",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "framework": null,
+  "public": true,
+  "github": {
+    "autoAlias": true,
+    "enabled": true,
+    "silent": false
+  }
+}

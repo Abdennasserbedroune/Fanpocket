@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="AFCON 2025 Marrakech - Your ultimate fan engagement platform for the Africa Cup of Nations hosted in Morocco"
+    />
+    <meta
+      name="keywords"
+      content="AFCON, Africa Cup of Nations, Morocco, Marrakech, Football, Soccer, 2025"
+    />
+    <meta name="author" content="AFCON 2025 Team" />
+
+    <!-- Open Graph -->
+    <meta
+      property="og:title"
+      content="AFCON 2025 Marrakech - Fan Engagement Platform"
+    />
+    <meta
+      property="og:description"
+      content="Experience the excitement of AFCON 2025 in Morocco. Get live updates, match schedules, and connect with fans worldwide."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://afcon2025-marrakech.com" />
+    <meta property="og:image" content="/images/og-image.jpg" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="AFCON 2025 Marrakech" />
+    <meta
+      name="twitter:description"
+      content="Experience the excitement of AFCON 2025 in Morocco"
+    />
+    <meta name="twitter:image" content="/images/twitter-card.jpg" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/dist/main.min.css" />
+
+    <title>AFCON 2025 Marrakech - Home</title>
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <header class="header">
+      <div class="container">
+        <div class="header-content">
+          <a href="/" class="logo">⚽ AFCON 2025</a>
+          <nav class="nav">
+            <a href="/">Home</a>
+            <a href="/dashboard.html">Dashboard</a>
+            <a href="/login.html">Login</a>
+            <a href="/register.html">Sign Up</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="main">
+      <section class="hero">
+        <div class="container">
+          <h1>Welcome to AFCON 2025 Marrakech</h1>
+          <p>
+            Experience the passion, pride, and glory of African football in the
+            heart of Morocco
+          </p>
+          <div style="margin-top: 2rem">
+            <a
+              href="/register.html"
+              class="btn btn-primary"
+              style="margin-right: 1rem"
+              >Get Started</a
+            >
+            <a href="#matches" class="btn btn-outline">View Matches</a>
+          </div>
+        </div>
+      </section>
+
+      <div class="container">
+        <section id="matches" class="section">
+          <h2 class="section-title">Upcoming Matches</h2>
+          <div id="matches-container" class="grid">
+            <div class="card">
+              <h3 class="card-title">Loading matches...</h3>
+              <p>Please wait while we fetch the latest match schedule.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="updates" class="section">
+          <h2 class="section-title">Latest Updates</h2>
+          <div id="updates-container" class="grid">
+            <div class="card">
+              <h3 class="card-title">Loading updates...</h3>
+              <p>Please wait while we fetch the latest news and updates.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="stats" class="section">
+          <h2 class="section-title">Team Statistics</h2>
+          <div id="stats-container" class="grid">
+            <div class="card">
+              <h3 class="card-title">Loading statistics...</h3>
+              <p>Please wait while we fetch team statistics.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <p>&copy; 2025 AFCON Marrakech. All rights reserved.</p>
+          <p>Powered by passion for African football 🇲🇦</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="/src/js/utils/dom.js"></script>
+    <script src="/src/js/utils/fetchJSON.js"></script>
+    <script src="/src/js/router.js"></script>
+    <script src="/src/js/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Your personalized AFCON 2025 dashboard" />
+    <meta name="robots" content="noindex, nofollow" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/dist/main.min.css" />
+
+    <title>Dashboard - AFCON 2025 Marrakech</title>
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <header class="header">
+      <div class="container">
+        <div class="header-content">
+          <a href="/" class="logo">⚽ AFCON 2025</a>
+          <nav class="nav">
+            <a href="/">Home</a>
+            <a href="/dashboard.html">Dashboard</a>
+            <a href="/profile.html">Profile</a>
+            <a href="/" onclick="alert('Logged out!'); return true;">Logout</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="container">
+        <section class="section">
+          <h1 class="section-title">Your Dashboard</h1>
+          <p>Welcome back! Here's your personalized AFCON 2025 experience.</p>
+        </section>
+
+        <section class="section">
+          <h2 class="section-title">Quick Stats</h2>
+          <div class="grid">
+            <div class="card">
+              <h3 class="card-title">Favorite Team</h3>
+              <p style="font-size: 2rem; margin: 1rem 0">🇲🇦</p>
+              <p>Morocco</p>
+            </div>
+            <div class="card">
+              <h3 class="card-title">Matches Watched</h3>
+              <p style="font-size: 2rem; margin: 1rem 0">0</p>
+              <p>Tournament just started!</p>
+            </div>
+            <div class="card">
+              <h3 class="card-title">Predictions Made</h3>
+              <p style="font-size: 2rem; margin: 1rem 0">0</p>
+              <p>Start predicting matches</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section-title">Your Next Matches</h2>
+          <div class="grid">
+            <div class="card">
+              <h3 class="card-title">Morocco vs Egypt</h3>
+              <p>January 15, 2025 at 20:00</p>
+              <p>Stade de Marrakech</p>
+              <a href="#" class="btn btn-primary mt-2">Set Reminder</a>
+            </div>
+            <div class="card">
+              <h3 class="card-title">Senegal vs Nigeria</h3>
+              <p>January 16, 2025 at 17:00</p>
+              <p>Grand Stade de Casablanca</p>
+              <a href="#" class="btn btn-primary mt-2">Set Reminder</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section-title">Community Feed</h2>
+          <div class="card">
+            <p>
+              Connect with fellow fans, share your predictions, and celebrate
+              the beautiful game together. Coming soon!
+            </p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <p>&copy; 2025 AFCON Marrakech. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="/src/js/utils/dom.js"></script>
+    <script src="/src/js/utils/fetchJSON.js"></script>
+    <script src="/src/js/router.js"></script>
+    <script src="/src/js/app.js"></script>
+  </body>
+</html>

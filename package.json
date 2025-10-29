@@ -1,0 +1,28 @@
+{
+  "name": "afcon2025-marrakech-mvp",
+  "version": "1.0.0",
+  "description": "AFCON 2025 Marrakech MVP - Fan engagement web app",
+  "scripts": {
+    "dev": "http-server public -p 8080 -o",
+    "build": "npm run build:css && npm run build:js && npm run build:copy",
+    "build:css": "lightningcss --minify --bundle --targets '>= 0.25%' src/css/main.css -o dist/main.min.css",
+    "build:js": "terser src/js/app.js src/js/utils/dom.js src/js/utils/fetchJSON.js src/js/router.js -o dist/app.min.js --compress --mangle",
+    "build:copy": "mkdir -p public/dist public/data && cp dist/*.css dist/*.js public/dist/ && cp data/*.json public/data/",
+    "lint": "prettier --check .",
+    "format": "prettier --write ."
+  },
+  "keywords": [
+    "afcon",
+    "marrakech",
+    "football",
+    "soccer"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "lightningcss-cli": "^1.22.1",
+    "prettier": "^3.1.1",
+    "terser": "^5.26.0"
+  }
+}

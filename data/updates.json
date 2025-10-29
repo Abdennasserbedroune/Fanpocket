@@ -1,0 +1,43 @@
+{
+  "_schema": {
+    "description": "Real-time tournament updates and news",
+    "fields": {
+      "id": "string - Unique identifier for the update",
+      "type": "string - Update type (news|goal|card|substitution|match-event)",
+      "title": "string - Update headline",
+      "content": "string - Detailed update content",
+      "timestamp": "ISO 8601 datetime string - When the update was posted",
+      "matchId": "string|null - Related match ID (null for general news)",
+      "priority": "string - Priority level (high|normal|low)"
+    }
+  },
+  "updates": [
+    {
+      "id": "update-001",
+      "type": "news",
+      "title": "AFCON 2025 Opening Ceremony Announced",
+      "content": "The spectacular opening ceremony will take place at Stade de Marrakech on January 15th, featuring traditional Moroccan performers and international artists.",
+      "timestamp": "2025-01-10T14:30:00Z",
+      "matchId": null,
+      "priority": "high"
+    },
+    {
+      "id": "update-002",
+      "type": "news",
+      "title": "Team Arrivals Update",
+      "content": "All 24 qualified teams have arrived in Morocco for AFCON 2025. Training sessions begin tomorrow at various venues across the host cities.",
+      "timestamp": "2025-01-11T09:15:00Z",
+      "matchId": null,
+      "priority": "normal"
+    },
+    {
+      "id": "update-003",
+      "type": "news",
+      "title": "Match Schedule Confirmed",
+      "content": "The complete tournament schedule has been finalized. Group stage matches will be played across five venues in Morocco, with the final scheduled for February 11th in Marrakech.",
+      "timestamp": "2025-01-12T16:00:00Z",
+      "matchId": null,
+      "priority": "high"
+    }
+  ]
+}
