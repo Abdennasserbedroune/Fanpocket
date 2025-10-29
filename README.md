@@ -51,12 +51,25 @@ All colors, spacing, and typography are defined as CSS custom properties in `src
 ### Prerequisites
 
 - Node.js 16+ and npm
+- Firebase project (see `FIREBASE_SETUP.md`)
 
 ### Installation
 
 ```bash
 npm install
 ```
+
+### Configuration
+
+1. Copy `.env.example` to `.env`:
+
+   ```bash
+   cp .env.example .env
+   ```
+
+2. Fill in your Firebase configuration in `.env` (see `FIREBASE_SETUP.md` for details)
+
+3. Update `src/js/config.js` with your Firebase values (or use the build script)
 
 ### Development
 
@@ -65,6 +78,8 @@ npm run dev
 ```
 
 This will start a local development server at `http://localhost:8080`.
+
+**Note:** For Firebase to work locally, you need to manually update `src/js/config.js` with your Firebase credentials, or set up environment variable injection through your development environment.
 
 ### Build
 
@@ -156,7 +171,8 @@ npm run format
 
 - **HTML5** - Semantic markup
 - **CSS3** - Custom properties, Grid, Flexbox
-- **Vanilla JavaScript** - ES6+ features
+- **Vanilla JavaScript** - ES6+ modules
+- **Firebase** - Authentication and Firestore database
 - **LightningCSS** - Fast CSS processing and minification
 - **Terser** - JavaScript minification
 - **http-server** - Local development server
@@ -209,6 +225,20 @@ Target Lighthouse scores:
 ## 📝 License
 
 MIT
+
+## 📚 Documentation
+
+- **[FIREBASE_SETUP.md](./FIREBASE_SETUP.md)** - Complete Firebase setup guide
+- **[TESTING_FIREBASE.md](./TESTING_FIREBASE.md)** - Testing authentication and security rules
+- **[DEPLOYMENT.md](./DEPLOYMENT.md)** - Deployment guide for Vercel/Netlify
+- **[CONTRIBUTING.md](./CONTRIBUTING.md)** - Contributing guidelines
+
+## 🔐 Security
+
+- Firestore security rules restrict access to user data
+- Authentication required for protected routes
+- Environment variables for sensitive configuration
+- See `firestore.rules` for detailed security rules
 
 ## 🤝 Contributing
 

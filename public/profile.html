@@ -22,7 +22,7 @@
             <a href="/">Home</a>
             <a href="/dashboard.html">Dashboard</a>
             <a href="/profile.html">Profile</a>
-            <a href="/" onclick="alert('Logged out!'); return true;">Logout</a>
+            <a href="#" id="logout-btn">Logout</a>
           </nav>
         </div>
       </div>
@@ -176,9 +176,7 @@
       </div>
     </footer>
 
-    <script src="/src/js/utils/dom.js"></script>
-    <script src="/src/js/utils/fetchJSON.js"></script>
-    <script src="/src/js/router.js"></script>
-    <script src="/src/js/app.js"></script>
+    <script src="/src/js/config.js"></script>
+    <script type="module" src="/src/js/pages/profile.js"></script>
   </body>
 </html>

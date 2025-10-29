@@ -3,3 +3,7 @@ dist
 *.min.js
 *.min.css
 package-lock.json
+public/dist
+public/data
+public/src
+config.injected.js
