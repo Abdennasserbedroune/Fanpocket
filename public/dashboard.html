@@ -31,58 +31,52 @@
     <main id="main" class="main">
       <div class="container">
         <section class="section">
-          <h1 class="section-title">Your Dashboard</h1>
-          <p id="welcome-message">
-            Welcome back! Here's your personalized AFCON 2025 experience.
-          </p>
-        </section>
-
-        <section class="section">
-          <h2 class="section-title">Quick Stats</h2>
-          <div class="grid">
-            <div class="card">
-              <h3 class="card-title">Favorite Team</h3>
-              <p style="font-size: 2rem; margin: 1rem 0">🇲🇦</p>
-              <p>Morocco</p>
-            </div>
-            <div class="card">
-              <h3 class="card-title">Matches Watched</h3>
-              <p style="font-size: 2rem; margin: 1rem 0">0</p>
-              <p>Tournament just started!</p>
-            </div>
-            <div class="card">
-              <h3 class="card-title">Predictions Made</h3>
-              <p style="font-size: 2rem; margin: 1rem 0">0</p>
-              <p>Start predicting matches</p>
-            </div>
-          </div>
-        </section>
-
-        <section class="section">
-          <h2 class="section-title">Your Next Matches</h2>
-          <div class="grid">
-            <div class="card">
-              <h3 class="card-title">Morocco vs Egypt</h3>
-              <p>January 15, 2025 at 20:00</p>
-              <p>Stade de Marrakech</p>
-              <a href="#" class="btn btn-primary mt-2">Set Reminder</a>
-            </div>
-            <div class="card">
-              <h3 class="card-title">Senegal vs Nigeria</h3>
-              <p>January 16, 2025 at 17:00</p>
-              <p>Grand Stade de Casablanca</p>
-              <a href="#" class="btn btn-primary mt-2">Set Reminder</a>
-            </div>
-          </div>
-        </section>
-
-        <section class="section">
-          <h2 class="section-title">Community Feed</h2>
-          <div class="card">
-            <p>
-              Connect with fellow fans, share your predictions, and celebrate
-              the beautiful game together. Coming soon!
+          <div id="greeting-section">
+            <h1 class="section-title" id="greeting-title">Your Dashboard</h1>
+            <p id="welcome-message">
+              Welcome back! Here's your personalized AFCON 2025 experience.
             </p>
+          </div>
+        </section>
+
+        <section class="section" id="team-stats-section" style="display: none">
+          <h2 class="section-title">My Team Stats</h2>
+          <div class="grid" id="team-stats-grid"></div>
+        </section>
+
+        <section class="section">
+          <h2 class="section-title">Upcoming Fixtures</h2>
+          <div class="grid" id="fixtures-grid">
+            <div class="card">
+              <p style="text-align: center; color: #666">Loading fixtures...</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section-title">Latest Updates</h2>
+          <div class="grid" id="updates-grid">
+            <div class="card">
+              <p style="text-align: center; color: #666">Loading updates...</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section-title">Quick Actions</h2>
+          <div class="grid">
+            <a href="/#matches" class="card" style="text-decoration: none; cursor: pointer">
+              <h3 class="card-title">View All Matches</h3>
+              <p>Check the complete tournament schedule</p>
+            </a>
+            <a href="/#teams" class="card" style="text-decoration: none; cursor: pointer">
+              <h3 class="card-title">Team Standings</h3>
+              <p>See how teams are performing</p>
+            </a>
+            <a href="/profile.html" class="card" style="text-decoration: none; cursor: pointer">
+              <h3 class="card-title">Edit Profile</h3>
+              <p>Update your preferences and avatar</p>
+            </a>
           </div>
         </section>
       </div>
