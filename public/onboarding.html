@@ -15,87 +15,107 @@
     <a href="#main" class="skip-link">Skip to main content</a>
 
     <main id="main" class="auth-container">
-      <div class="auth-card" style="max-width: 600px">
-        <h1 class="auth-title">Welcome to AFCON 2025! 🎉</h1>
-        <p class="text-center mb-3">
-          Let's personalize your experience in just a few steps
-        </p>
-
-        <div class="section">
-          <h2 style="font-size: 1.25rem; margin-bottom: 1rem">
-            Step 1: Choose Your Favorite Team
-          </h2>
-          <div class="form-group">
-            <select class="form-input" id="favorite-team">
-              <option value="">Select your team</option>
-              <option value="morocco">🇲🇦 Morocco</option>
-              <option value="egypt">🇪🇬 Egypt</option>
-              <option value="senegal">🇸🇳 Senegal</option>
-              <option value="nigeria">🇳🇬 Nigeria</option>
-              <option value="cameroon">🇨🇲 Cameroon</option>
-              <option value="ivory-coast">🇨🇮 Ivory Coast</option>
-              <option value="ghana">🇬🇭 Ghana</option>
-              <option value="algeria">🇩🇿 Algeria</option>
-            </select>
+      <div class="auth-card onboarding-card">
+        <div class="onboarding-stepper">
+          <div class="stepper-step active" data-step="1">
+            <div class="step-number">1</div>
+            <div class="step-label">Welcome</div>
+          </div>
+          <div class="stepper-line"></div>
+          <div class="stepper-step" data-step="2">
+            <div class="step-number">2</div>
+            <div class="step-label">Select Team</div>
           </div>
         </div>
 
-        <div class="section">
-          <h2 style="font-size: 1.25rem; margin-bottom: 1rem">
-            Step 2: Notification Preferences
-          </h2>
-          <div class="form-group">
-            <label class="form-label">
-              <input type="checkbox" checked /> Match reminders
-            </label>
+        <div class="onboarding-step" id="step-1">
+          <h1 class="auth-title">Welcome to AFCON 2025! 🎉</h1>
+          <p class="text-center mb-3" style="font-size: 1.1rem">
+            Get ready for the biggest African football tournament in Marrakech!
+          </p>
+
+          <div class="welcome-features">
+            <div class="feature-item">
+              <span class="feature-icon">⚽</span>
+              <div>
+                <h3>Live Updates</h3>
+                <p>
+                  Follow matches in real-time with live scores and commentary
+                </p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">📊</span>
+              <div>
+                <h3>Team Stats</h3>
+                <p>Track your favorite team's performance and standings</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">🏆</span>
+              <div>
+                <h3>Tournament Info</h3>
+                <p>Stay updated with schedules, venues, and results</p>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label class="form-label">
-              <input type="checkbox" checked /> Score updates
-            </label>
-          </div>
-          <div class="form-group">
-            <label class="form-label">
-              <input type="checkbox" /> Tournament news
-            </label>
-          </div>
+
+          <button
+            class="btn btn-primary"
+            id="next-btn"
+            style="width: 100%; margin-top: 2rem"
+          >
+            Continue →
+          </button>
         </div>
 
-        <div class="section">
-          <h2 style="font-size: 1.25rem; margin-bottom: 1rem">
-            Step 3: What interests you most?
-          </h2>
-          <div class="form-group">
-            <label class="form-label">
-              <input type="checkbox" /> Live match commentary
-            </label>
+        <div class="onboarding-step" id="step-2" style="display: none">
+          <h1 class="auth-title">Choose Your Favorite Team</h1>
+          <p class="text-center mb-3">
+            Select the team you'll be supporting throughout the tournament
+          </p>
+
+          <div class="team-search">
+            <input
+              type="text"
+              id="team-search"
+              class="form-input"
+              placeholder="Search teams..."
+              autocomplete="off"
+            />
           </div>
-          <div class="form-group">
-            <label class="form-label">
-              <input type="checkbox" /> Player statistics
-            </label>
+
+          <div id="teams-grid" class="teams-grid">
+            <div class="loading-spinner">Loading teams...</div>
           </div>
-          <div class="form-group">
-            <label class="form-label">
-              <input type="checkbox" /> Fan community
-            </label>
+
+          <div
+            id="selected-team-info"
+            class="selected-team-info"
+            style="display: none"
+          >
+            <div class="selected-team-content">
+              <span class="selected-flag" id="selected-flag"></span>
+              <span id="selected-name"></span>
+            </div>
           </div>
-          <div class="form-group">
-            <label class="form-label">
-              <input type="checkbox" /> Match predictions
-            </label>
+
+          <div class="onboarding-actions">
+            <button class="btn btn-secondary" id="back-btn">← Back</button>
+            <button
+              class="btn btn-primary"
+              id="complete-btn"
+              disabled
+              style="flex: 1"
+            >
+              Complete Setup
+            </button>
           </div>
+
+          <a href="/dashboard.html" class="auth-link" id="skip-link"
+            >Skip for now</a
+          >
         </div>
-
-        <button
-          onclick="window.location.href='/dashboard.html'"
-          class="btn btn-primary"
-          style="width: 100%; margin-top: 1rem"
-        >
-          Complete Setup →
-        </button>
-
-        <a href="/dashboard.html" class="auth-link">Skip for now</a>
       </div>
     </main>
 

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/dist/main.min.css" />
+    <title>Seed Teams - AFCON 2025</title>
+  </head>
+  <body>
+    <main id="main" class="auth-container">
+      <div class="auth-card">
+        <h1 class="auth-title">Seed Teams Data</h1>
+        <p class="text-center mb-3">
+          Import team data from teams_stats.json to Firestore
+        </p>
+
+        <div id="status" style="margin-bottom: 1rem"></div>
+
+        <button id="seed-btn" class="btn btn-primary" style="width: 100%">
+          Import Teams to Firestore
+        </button>
+
+        <a href="/dashboard.html" class="auth-link">Back to Dashboard</a>
+      </div>
+    </main>
+
+    <script src="/src/js/config.js"></script>
+    <script type="module">
+      import { db } from '/src/js/firebase.js';
+      import {
+        collection,
+        doc,
+        setDoc,
+        getDocs,
+      } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+
+      const showStatus = (message, type = 'info') => {
+        const statusDiv = document.getElementById('status');
+        const colors = {
+          success: '#006233',
+          error: '#c1272d',
+          info: '#003580',
+        };
+
+        statusDiv.innerHTML = `<div style="
+          color: ${colors[type]};
+          padding: 0.75rem;
+          background-color: ${colors[type]}15;
+          border: 1px solid ${colors[type]};
+          border-radius: 4px;
+        ">${message}</div>`;
+      };
+
+      const seedTeams = async () => {
+        const btn = document.getElementById('seed-btn');
+        btn.disabled = true;
+        btn.textContent = 'Importing...';
+
+        try {
+          showStatus('Fetching teams data...', 'info');
+
+          const response = await fetch('/data/teams_stats.json');
+          const data = await response.json();
+          const teams = data.teams;
+
+          showStatus(`Found ${teams.length} teams. Importing...`, 'info');
+
+          let imported = 0;
+          for (const team of teams) {
+            const teamRef = doc(db, 'teams', team.id);
+            await setDoc(teamRef, {
+              ...team,
+              flagPath: `/images/flags/${team.code.toLowerCase()}.svg`,
+              createdAt: new Date().toISOString(),
+              updatedAt: new Date().toISOString(),
+            });
+            imported++;
+            showStatus(`Imported ${imported}/${teams.length} teams...`, 'info');
+          }
+
+          showStatus(
+            `✅ Successfully imported ${teams.length} teams!`,
+            'success'
+          );
+          btn.textContent = 'Import Complete';
+
+          const teamsSnapshot = await getDocs(collection(db, 'teams'));
+          console.log('Teams in Firestore:', teamsSnapshot.size);
+        } catch (error) {
+          console.error('Error seeding teams:', error);
+          showStatus(`❌ Error: ${error.message}`, 'error');
+          btn.disabled = false;
+          btn.textContent = 'Retry Import';
+        }
+      };
+
+      document.getElementById('seed-btn').addEventListener('click', seedTeams);
+
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('seed') === 'true') {
+        setTimeout(() => seedTeams(), 1000);
+      }
+    </script>
+  </body>
+</html>

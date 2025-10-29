@@ -6,6 +6,10 @@
       "name": "string - Team name",
       "code": "string - Three-letter country code (ISO 3166-1 alpha-3)",
       "group": "string - Tournament group assignment",
+      "colors": {
+        "primary": "string - Team primary color hex code",
+        "secondary": "string - Team secondary color hex code"
+      },
       "stats": {
         "played": "number - Matches played",
         "wins": "number - Matches won",
@@ -26,6 +30,10 @@
       "name": "Morocco",
       "code": "MAR",
       "group": "A",
+      "colors": {
+        "primary": "#C1272D",
+        "secondary": "#006233"
+      },
       "stats": {
         "played": 0,
         "wins": 0,
@@ -44,6 +52,10 @@
       "name": "Senegal",
       "code": "SEN",
       "group": "B",
+      "colors": {
+        "primary": "#00A652",
+        "secondary": "#FCD116"
+      },
       "stats": {
         "played": 0,
         "wins": 0,
@@ -62,6 +74,10 @@
       "name": "Egypt",
       "code": "EGY",
       "group": "A",
+      "colors": {
+        "primary": "#C1272D",
+        "secondary": "#000000"
+      },
       "stats": {
         "played": 0,
         "wins": 0,
@@ -74,6 +90,468 @@
       },
       "form": [],
       "ranking": 3
+    },
+    {
+      "id": "team-004",
+      "name": "Nigeria",
+      "code": "NGA",
+      "group": "B",
+      "colors": {
+        "primary": "#008751",
+        "secondary": "#FFFFFF"
+      },
+      "stats": {
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDifference": 0,
+        "points": 0
+      },
+      "form": [],
+      "ranking": 4
+    },
+    {
+      "id": "team-005",
+      "name": "Cameroon",
+      "code": "CMR",
+      "group": "C",
+      "colors": {
+        "primary": "#007A3D",
+        "secondary": "#FCD116"
+      },
+      "stats": {
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDifference": 0,
+        "points": 0
+      },
+      "form": [],
+      "ranking": 5
+    },
+    {
+      "id": "team-006",
+      "name": "Algeria",
+      "code": "DZA",
+      "group": "C",
+      "colors": {
+        "primary": "#006233",
+        "secondary": "#FFFFFF"
+      },
+      "stats": {
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDifference": 0,
+        "points": 0
+      },
+      "form": [],
+      "ranking": 6
+    },
+    {
+      "id": "team-007",
+      "name": "Tunisia",
+      "code": "TUN",
+      "group": "D",
+      "colors": {
+        "primary": "#E70013",
+        "secondary": "#FFFFFF"
+      },
+      "stats": {
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDifference": 0,
+        "points": 0
+      },
+      "form": [],
+      "ranking": 7
+    },
+    {
+      "id": "team-008",
+      "name": "Ivory Coast",
+      "code": "CIV",
+      "group": "D",
+      "colors": {
+        "primary": "#FF8200",
+        "secondary": "#00CD00"
+      },
+      "stats": {
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDifference": 0,
+        "points": 0
+      },
+      "form": [],
+      "ranking": 8
+    },
+    {
+      "id": "team-009",
+      "name": "Ghana",
+      "code": "GHA",
+      "group": "E",
+      "colors": {
+        "primary": "#006B3F",
+        "secondary": "#FCD116"
+      },
+      "stats": {
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDifference": 0,
+        "points": 0
+      },
+      "form": [],
+      "ranking": 9
+    },
+    {
+      "id": "team-010",
+      "name": "Mali",
+      "code": "MLI",
+      "group": "E",
+      "colors": {
+        "primary": "#14B53A",
+        "secondary": "#FCD116"
+      },
+      "stats": {
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDifference": 0,
+        "points": 0
+      },
+      "form": [],
+      "ranking": 10
+    },
+    {
+      "id": "team-011",
+      "name": "Burkina Faso",
+      "code": "BFA",
+      "group": "F",
+      "colors": {
+        "primary": "#EF2B2D",
+        "secondary": "#009E49"
+      },
+      "stats": {
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDifference": 0,
+        "points": 0
+      },
+      "form": [],
+      "ranking": 11
+    },
+    {
+      "id": "team-012",
+      "name": "South Africa",
+      "code": "ZAF",
+      "group": "F",
+      "colors": {
+        "primary": "#007A4D",
+        "secondary": "#FFB81C"
+      },
+      "stats": {
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDifference": 0,
+        "points": 0
+      },
+      "form": [],
+      "ranking": 12
+    },
+    {
+      "id": "team-013",
+      "name": "DR Congo",
+      "code": "COD",
+      "group": "A",
+      "colors": {
+        "primary": "#007FFF",
+        "secondary": "#F7D618"
+      },
+      "stats": {
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDifference": 0,
+        "points": 0
+      },
+      "form": [],
+      "ranking": 13
+    },
+    {
+      "id": "team-014",
+      "name": "Guinea",
+      "code": "GIN",
+      "group": "B",
+      "colors": {
+        "primary": "#CE1126",
+        "secondary": "#FCD116"
+      },
+      "stats": {
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDifference": 0,
+        "points": 0
+      },
+      "form": [],
+      "ranking": 14
+    },
+    {
+      "id": "team-015",
+      "name": "Gabon",
+      "code": "GAB",
+      "group": "C",
+      "colors": {
+        "primary": "#009E60",
+        "secondary": "#FCD116"
+      },
+      "stats": {
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDifference": 0,
+        "points": 0
+      },
+      "form": [],
+      "ranking": 15
+    },
+    {
+      "id": "team-016",
+      "name": "Uganda",
+      "code": "UGA",
+      "group": "D",
+      "colors": {
+        "primary": "#FCDC04",
+        "secondary": "#000000"
+      },
+      "stats": {
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDifference": 0,
+        "points": 0
+      },
+      "form": [],
+      "ranking": 16
+    },
+    {
+      "id": "team-017",
+      "name": "Cape Verde",
+      "code": "CPV",
+      "group": "E",
+      "colors": {
+        "primary": "#003893",
+        "secondary": "#CF2027"
+      },
+      "stats": {
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDifference": 0,
+        "points": 0
+      },
+      "form": [],
+      "ranking": 17
+    },
+    {
+      "id": "team-018",
+      "name": "Mauritania",
+      "code": "MRT",
+      "group": "F",
+      "colors": {
+        "primary": "#006233",
+        "secondary": "#FFD700"
+      },
+      "stats": {
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDifference": 0,
+        "points": 0
+      },
+      "form": [],
+      "ranking": 18
+    },
+    {
+      "id": "team-019",
+      "name": "Angola",
+      "code": "AGO",
+      "group": "A",
+      "colors": {
+        "primary": "#CC092F",
+        "secondary": "#000000"
+      },
+      "stats": {
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDifference": 0,
+        "points": 0
+      },
+      "form": [],
+      "ranking": 19
+    },
+    {
+      "id": "team-020",
+      "name": "Zambia",
+      "code": "ZMB",
+      "group": "B",
+      "colors": {
+        "primary": "#198A00",
+        "secondary": "#EF7D00"
+      },
+      "stats": {
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDifference": 0,
+        "points": 0
+      },
+      "form": [],
+      "ranking": 20
+    },
+    {
+      "id": "team-021",
+      "name": "Tanzania",
+      "code": "TZA",
+      "group": "C",
+      "colors": {
+        "primary": "#1EB53A",
+        "secondary": "#FCD116"
+      },
+      "stats": {
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDifference": 0,
+        "points": 0
+      },
+      "form": [],
+      "ranking": 21
+    },
+    {
+      "id": "team-022",
+      "name": "Mozambique",
+      "code": "MOZ",
+      "group": "D",
+      "colors": {
+        "primary": "#007168",
+        "secondary": "#FFD100"
+      },
+      "stats": {
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDifference": 0,
+        "points": 0
+      },
+      "form": [],
+      "ranking": 22
+    },
+    {
+      "id": "team-023",
+      "name": "Namibia",
+      "code": "NAM",
+      "group": "E",
+      "colors": {
+        "primary": "#003580",
+        "secondary": "#FFCD00"
+      },
+      "stats": {
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDifference": 0,
+        "points": 0
+      },
+      "form": [],
+      "ranking": 23
+    },
+    {
+      "id": "team-024",
+      "name": "Botswana",
+      "code": "BWA",
+      "group": "F",
+      "colors": {
+        "primary": "#75AADB",
+        "secondary": "#000000"
+      },
+      "stats": {
+        "played": 0,
+        "wins": 0,
+        "draws": 0,
+        "losses": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDifference": 0,
+        "points": 0
+      },
+      "form": [],
+      "ranking": 24
     }
   ]
 }

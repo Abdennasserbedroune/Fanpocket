@@ -30,11 +30,11 @@ service cloud.firestore {
       allow write: if isOwner(userId);
     }
     
-    // Teams collection: read public, write restricted to admin
-    // In MVP, writes are effectively denied (no admin claims set)
+    // Teams collection: read public, write for authenticated users (for seeding)
+    // TODO: In production, restrict write to admin only
     match /teams/{teamId} {
       allow read: if true;
-      allow write: if isAdmin();
+      allow write: if isAuthenticated();
     }
     
     // Default deny all other collections

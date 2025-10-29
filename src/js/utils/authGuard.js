@@ -1,4 +1,4 @@
-import { getCurrentUser, observeAuthState } from '../auth.js';
+import { getCurrentUser, observeAuthState, getUserProfile } from '../auth.js';
 
 const protectedPages = ['/dashboard.html', '/profile.html', '/onboarding.html'];
 
@@ -50,17 +50,35 @@ export const initAuthGuard = () => {
 };
 
 export const redirectIfAuthenticated = redirectTo => {
-  observeAuthState(user => {
+  observeAuthState(async user => {
     if (
       user &&
       (window.location.pathname.includes('/login.html') ||
         window.location.pathname.includes('/register.html'))
     ) {
       const urlParams = new URLSearchParams(window.location.search);
-      const redirect =
-        urlParams.get('redirect') || redirectTo || '/dashboard.html';
-      console.log('Redirecting authenticated user to:', redirect);
-      window.location.href = redirect;
+      const redirect = urlParams.get('redirect');
+
+      if (redirect) {
+        console.log('Redirecting authenticated user to:', redirect);
+        window.location.href = redirect;
+      } else {
+        try {
+          const profile = await getUserProfile(user.uid);
+          if (profile && !profile.onboardingComplete) {
+            console.log('Redirecting to onboarding');
+            window.location.href = '/onboarding.html';
+          } else {
+            const target = redirectTo || '/dashboard.html';
+            console.log('Redirecting authenticated user to:', target);
+            window.location.href = target;
+          }
+        } catch (error) {
+          console.error('Error checking onboarding status:', error);
+          const target = redirectTo || '/dashboard.html';
+          window.location.href = target;
+        }
+      }
     }
   });
 };
