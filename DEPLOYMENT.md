@@ -162,18 +162,50 @@ Both Vercel and Netlify provide:
 - ✅ Free SSL certificates
 - ✅ HTTP/2 support
 
-## Environment Variables (Future)
+## Environment Variables
 
-When adding backend integration:
+The application requires Firebase configuration through environment variables.
 
-1. **Vercel**
+### Vercel
 
-   ```bash
-   vercel env add API_URL
-   ```
+1. Go to your Vercel project dashboard
+2. Navigate to **Settings > Environment Variables**
+3. Add the following variables with values from your Firebase project:
+   - `VITE_FIREBASE_API_KEY`
+   - `VITE_FIREBASE_AUTH_DOMAIN`
+   - `VITE_FIREBASE_PROJECT_ID`
+   - `VITE_FIREBASE_STORAGE_BUCKET`
+   - `VITE_FIREBASE_MESSAGING_SENDER_ID`
+   - `VITE_FIREBASE_APP_ID`
+4. For each variable, select which environments to apply (Production/Preview/Development)
+5. Redeploy for changes to take effect
 
-2. **Netlify**
-   Add in Netlify dashboard under Site settings > Environment variables
+```bash
+# Alternative: Using Vercel CLI
+vercel env add VITE_FIREBASE_API_KEY
+vercel env add VITE_FIREBASE_AUTH_DOMAIN
+# ... repeat for all variables
+```
+
+### Netlify
+
+1. Go to your Netlify site dashboard
+2. Navigate to **Site settings > Environment variables**
+3. Click "Add a variable"
+4. Add each Firebase configuration variable:
+   - `VITE_FIREBASE_API_KEY`
+   - `VITE_FIREBASE_AUTH_DOMAIN`
+   - `VITE_FIREBASE_PROJECT_ID`
+   - `VITE_FIREBASE_STORAGE_BUCKET`
+   - `VITE_FIREBASE_MESSAGING_SENDER_ID`
+   - `VITE_FIREBASE_APP_ID`
+5. Trigger a new deploy for changes to take effect
+
+### Environment Variable Injection
+
+The build process automatically injects environment variables into `src/js/config.js` during the build step. The `scripts/inject-config.js` script replaces placeholders like `%%VITE_FIREBASE_API_KEY%%` with actual values.
+
+See `FIREBASE_SETUP.md` for detailed instructions on obtaining these values from Firebase Console.
 
 ## Monitoring
 

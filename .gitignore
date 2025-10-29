@@ -10,6 +10,8 @@ dist/
 *.min.js
 public/dist/
 public/data/
+public/src/
+config.injected.js
 
 # Environment variables
 .env

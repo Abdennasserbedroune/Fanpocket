@@ -55,6 +55,25 @@
           </button>
         </form>
 
+        <div style="text-align: center; margin: 1rem 0">
+          <span style="color: var(--color-text-secondary, #666)">or</span>
+        </div>
+
+        <button
+          id="google-signin-btn"
+          type="button"
+          class="btn"
+          style="
+            width: 100%;
+            background: #fff;
+            color: #333;
+            border: 1px solid #ddd;
+          "
+        >
+          <span style="margin-right: 0.5rem">🔍</span>
+          Sign in with Google
+        </button>
+
         <a href="/reset.html" class="auth-link">Forgot password?</a>
         <a href="/register.html" class="auth-link">
           Don't have an account? Sign up
@@ -63,9 +82,7 @@
       </div>
     </main>
 
-    <script src="/src/js/utils/dom.js"></script>
-    <script src="/src/js/utils/fetchJSON.js"></script>
-    <script src="/src/js/router.js"></script>
-    <script src="/src/js/app.js"></script>
+    <script src="/src/js/config.js"></script>
+    <script type="module" src="/src/js/pages/login.js"></script>
   </body>
 </html>
