@@ -50,6 +50,66 @@
       "awayScore": null,
       "group": "C",
       "round": "group"
+    },
+    {
+      "id": "match-004",
+      "homeTeam": "Ghana",
+      "awayTeam": "Algeria",
+      "date": "2025-01-18T17:00:00Z",
+      "venue": "Stade de Marrakech",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "group": "D",
+      "round": "group"
+    },
+    {
+      "id": "match-005",
+      "homeTeam": "Morocco",
+      "awayTeam": "Senegal",
+      "date": "2025-01-20T20:00:00Z",
+      "venue": "Grand Stade de Casablanca",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "group": "A",
+      "round": "group"
+    },
+    {
+      "id": "match-006",
+      "homeTeam": "Egypt",
+      "awayTeam": "Nigeria",
+      "date": "2025-01-21T17:00:00Z",
+      "venue": "Stade Prince Moulay Abdallah",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "group": "A",
+      "round": "group"
+    },
+    {
+      "id": "match-007",
+      "homeTeam": "Cameroon",
+      "awayTeam": "Ghana",
+      "date": "2025-01-22T20:00:00Z",
+      "venue": "Stade de Marrakech",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "group": "C",
+      "round": "group"
+    },
+    {
+      "id": "match-008",
+      "homeTeam": "Ivory Coast",
+      "awayTeam": "Algeria",
+      "date": "2025-01-23T17:00:00Z",
+      "venue": "Grand Stade de Casablanca",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "group": "D",
+      "round": "group"
     }
   ]
 }

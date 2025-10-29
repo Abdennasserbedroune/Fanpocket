@@ -10,6 +10,76 @@
     <link rel="stylesheet" href="/dist/main.min.css" />
 
     <title>Profile - AFCON 2025 Marrakech</title>
+    <style>
+      .avatar-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        margin: 1rem 0;
+      }
+
+      .avatar-option {
+        aspect-ratio: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 3px solid #e5e7eb;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 3rem;
+        transition: all 0.2s;
+        background: white;
+      }
+
+      .avatar-option:hover {
+        border-color: #c1272d;
+        transform: scale(1.05);
+      }
+
+      .avatar-option.selected {
+        border-color: #c1272d;
+        background: #fef2f2;
+      }
+
+      .profile-avatar {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 4rem;
+        background: #f5f5f5;
+        border: 3px solid #e5e7eb;
+        margin: 0 auto 1rem;
+      }
+
+      .edit-mode {
+        display: none;
+      }
+
+      .status-message {
+        padding: 0.75rem 1rem;
+        border-radius: 0.5rem;
+        margin-bottom: 1rem;
+        font-weight: 500;
+      }
+
+      .status-message.success {
+        background: #d1fae5;
+        color: #065f46;
+      }
+
+      .status-message.error {
+        background: #fee2e2;
+        color: #991b1b;
+      }
+
+      .status-message.loading {
+        background: #dbeafe;
+        color: #1e40af;
+      }
+    </style>
   </head>
   <body>
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -39,130 +109,103 @@
           style="grid-template-columns: 1fr; max-width: 600px; margin: 0 auto"
         >
           <div class="card">
-            <h2 class="card-title">Personal Information</h2>
-            <form>
+            <div id="status-container"></div>
+
+            <div id="view-mode">
+              <div class="profile-avatar" id="view-avatar">⚽</div>
+              <h2
+                style="text-align: center; margin-bottom: 0.5rem"
+                id="view-display-name"
+              >
+                Loading...
+              </h2>
+              <p
+                style="text-align: center; color: #666; margin-bottom: 1.5rem"
+                id="view-email"
+              ></p>
+
               <div class="form-group">
-                <label for="name" class="form-label">Full Name</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  class="form-input"
-                  value="John Doe"
-                />
+                <label class="form-label">Favorite Team</label>
+                <p id="view-favorite-team" style="font-weight: 600">
+                  Not set
+                </p>
               </div>
 
               <div class="form-group">
-                <label for="email" class="form-label">Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  class="form-input"
-                  value="john@example.com"
-                />
+                <label class="form-label">Member Since</label>
+                <p id="view-member-since" style="font-weight: 600">-</p>
               </div>
 
-              <div class="form-group">
-                <label for="country" class="form-label">Country</label>
-                <input
-                  type="text"
-                  id="country"
-                  name="country"
-                  class="form-input"
-                  placeholder="Your country"
-                />
-              </div>
-
-              <button type="submit" class="btn btn-primary">
-                Update Profile
+              <button
+                id="edit-btn"
+                class="btn btn-primary"
+                style="width: 100%; margin-top: 1rem"
+              >
+                Edit Profile
               </button>
-            </form>
-          </div>
+            </div>
 
-          <div class="card">
-            <h2 class="card-title">Preferences</h2>
-            <form>
+            <div id="edit-mode" class="edit-mode">
+              <h3 style="margin-bottom: 1rem">Select Avatar</h3>
+              <div class="avatar-grid" id="avatar-grid">
+                <div class="avatar-option" data-avatar="⚽">⚽</div>
+                <div class="avatar-option" data-avatar="🏆">🏆</div>
+                <div class="avatar-option" data-avatar="👤">👤</div>
+                <div class="avatar-option" data-avatar="⭐">⭐</div>
+                <div class="avatar-option" data-avatar="🎯">🎯</div>
+                <div class="avatar-option" data-avatar="🔥">🔥</div>
+              </div>
+
               <div class="form-group">
-                <label for="favorite-team" class="form-label">
+                <label for="edit-display-name" class="form-label">
+                  Display Name
+                </label>
+                <input
+                  type="text"
+                  id="edit-display-name"
+                  class="form-input"
+                  placeholder="Enter your display name"
+                  maxlength="50"
+                />
+                <small style="color: #666; display: block; margin-top: 0.25rem">
+                  2-50 characters
+                </small>
+              </div>
+
+              <div class="form-group">
+                <label for="edit-favorite-team" class="form-label">
                   Favorite Team
                 </label>
-                <select
-                  id="favorite-team"
-                  name="favorite-team"
-                  class="form-input"
-                >
+                <select id="edit-favorite-team" class="form-input">
                   <option value="">Select a team</option>
-                  <option value="morocco" selected>Morocco</option>
+                  <option value="morocco">Morocco</option>
                   <option value="egypt">Egypt</option>
                   <option value="senegal">Senegal</option>
                   <option value="nigeria">Nigeria</option>
                   <option value="cameroon">Cameroon</option>
                   <option value="ivory-coast">Ivory Coast</option>
+                  <option value="ghana">Ghana</option>
+                  <option value="algeria">Algeria</option>
                 </select>
               </div>
 
-              <div class="form-group">
-                <label class="form-label">
-                  <input type="checkbox" checked /> Receive match notifications
-                </label>
+              <div style="display: flex; gap: 1rem; margin-top: 1.5rem">
+                <button
+                  id="cancel-btn"
+                  class="btn"
+                  style="flex: 1; background: #f5f5f5; color: #333"
+                >
+                  Cancel
+                </button>
+                <button
+                  id="save-btn"
+                  class="btn btn-primary"
+                  style="flex: 1"
+                >
+                  Save Changes
+                </button>
               </div>
-
-              <div class="form-group">
-                <label class="form-label">
-                  <input type="checkbox" checked /> Receive newsletter
-                </label>
-              </div>
-
-              <button type="submit" class="btn btn-primary">
-                Save Preferences
-              </button>
-            </form>
-          </div>
-
-          <div class="card">
-            <h2 class="card-title">Change Password</h2>
-            <form>
-              <div class="form-group">
-                <label for="current-password" class="form-label">
-                  Current Password
-                </label>
-                <input
-                  type="password"
-                  id="current-password"
-                  name="current-password"
-                  class="form-input"
-                />
-              </div>
-
-              <div class="form-group">
-                <label for="new-password" class="form-label">
-                  New Password
-                </label>
-                <input
-                  type="password"
-                  id="new-password"
-                  name="new-password"
-                  class="form-input"
-                />
-              </div>
-
-              <div class="form-group">
-                <label for="confirm-password" class="form-label">
-                  Confirm New Password
-                </label>
-                <input
-                  type="password"
-                  id="confirm-password"
-                  name="confirm-password"
-                  class="form-input"
-                />
-              </div>
-
-              <button type="submit" class="btn btn-primary">
-                Update Password
-              </button>
-            </form>
+            </div>
           </div>
         </div>
       </div>
