@@ -1,4 +1,4 @@
-import { signIn, signInWithGoogle } from '../auth.js';
+import { signIn, signInWithGoogle, getUserProfile } from '../auth.js';
 import { redirectIfAuthenticated } from '../utils/authGuard.js';
 
 redirectIfAuthenticated('/dashboard.html');
@@ -70,11 +70,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
 
-        await signIn(email, password);
+        const user = await signIn(email, password);
 
+        const profile = await getUserProfile(user.uid);
         const urlParams = new URLSearchParams(window.location.search);
-        const redirect = urlParams.get('redirect') || '/dashboard.html';
-        window.location.href = redirect;
+        const redirect = urlParams.get('redirect');
+
+        if (redirect) {
+          window.location.href = redirect;
+        } else if (profile && !profile.onboardingComplete) {
+          window.location.href = '/onboarding.html';
+        } else {
+          window.location.href = '/dashboard.html';
+        }
       } catch (error) {
         console.error('Login error:', error);
         let message = 'Failed to login. Please try again.';
@@ -108,11 +116,19 @@ document.addEventListener('DOMContentLoaded', () => {
       googleBtn.textContent = 'Signing in...';
 
       try {
-        await signInWithGoogle();
+        const user = await signInWithGoogle();
 
+        const profile = await getUserProfile(user.uid);
         const urlParams = new URLSearchParams(window.location.search);
-        const redirect = urlParams.get('redirect') || '/dashboard.html';
-        window.location.href = redirect;
+        const redirect = urlParams.get('redirect');
+
+        if (redirect) {
+          window.location.href = redirect;
+        } else if (profile && !profile.onboardingComplete) {
+          window.location.href = '/onboarding.html';
+        } else {
+          window.location.href = '/dashboard.html';
+        }
       } catch (error) {
         console.error('Google sign-in error:', error);
         let message = 'Failed to sign in with Google. Please try again.';

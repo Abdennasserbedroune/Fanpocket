@@ -1184,3 +1184,231 @@ a:focus-visible {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+/* Onboarding Styles */
+.onboarding-card {
+  max-width: 900px;
+}
+
+.onboarding-stepper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  padding: 1rem 0;
+}
+
+.stepper-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.stepper-step.active,
+.stepper-step.completed {
+  opacity: 1;
+}
+
+.step-number {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: var(--color-secondary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.stepper-step.active .step-number {
+  background-color: var(--color-primary);
+  transform: scale(1.1);
+}
+
+.stepper-step.completed .step-number {
+  background-color: var(--color-success, #006233);
+}
+
+.stepper-step.completed .step-number::before {
+  content: '✓';
+}
+
+.step-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.stepper-line {
+  width: 4rem;
+  height: 2px;
+  background-color: var(--color-secondary);
+  margin: 0 1rem;
+  opacity: 0.3;
+}
+
+.welcome-features {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.feature-item {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: var(--color-background-alt);
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+}
+
+.feature-item:hover {
+  transform: translateY(-2px);
+}
+
+.feature-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.feature-item h3 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1rem;
+  color: var(--color-text);
+}
+
+.feature-item p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.team-search {
+  margin-bottom: 1.5rem;
+}
+
+.teams-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 0.5rem;
+}
+
+.team-card {
+  background: var(--color-background-alt);
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.team-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.team-card:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.team-card.selected {
+  border-color: var(--color-primary);
+  background-color: rgba(var(--color-primary-rgb, 193, 39, 45), 0.05);
+}
+
+.team-flag {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  background-color: #f0f0f0;
+}
+
+.team-name {
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: var(--color-text);
+}
+
+.selected-team-info {
+  padding: 1rem;
+  border: 2px solid var(--color-primary);
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  background-color: rgba(var(--color-primary-rgb, 193, 39, 45), 0.05);
+}
+
+.selected-team-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.selected-flag {
+  font-size: 2rem;
+}
+
+.onboarding-actions {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.loading-spinner {
+  text-align: center;
+  padding: 2rem;
+  color: var(--color-text-muted);
+}
+
+@media (min-width: 480px) {
+  .teams-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .teams-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    max-height: 500px;
+  }
+
+  .team-card {
+    padding: 1.25rem;
+  }
+
+  .team-flag {
+    height: 70px;
+  }
+
+  .team-name {
+    font-size: 0.9375rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .teams-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}

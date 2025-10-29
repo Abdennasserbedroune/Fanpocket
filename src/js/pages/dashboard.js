@@ -4,6 +4,20 @@ import { initAuthGuard } from '../utils/authGuard.js';
 initAuthGuard();
 
 document.addEventListener('DOMContentLoaded', async () => {
+  const user = getCurrentUser();
+
+  if (user) {
+    try {
+      const profile = await getUserProfile(user.uid);
+      if (profile && !profile.onboardingComplete) {
+        window.location.href = '/onboarding.html';
+        return;
+      }
+    } catch (error) {
+      console.error('Error checking onboarding status:', error);
+    }
+  }
+
   const logoutBtn = document.getElementById('logout-btn');
 
   if (logoutBtn) {
@@ -20,7 +34,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }
 
-  const user = getCurrentUser();
   if (user) {
     const welcomeElement = document.getElementById('welcome-message');
     if (welcomeElement) {
