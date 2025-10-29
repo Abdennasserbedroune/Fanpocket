@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Get started with AFCON 2025 Marrakech" />
+    <meta name="robots" content="noindex, nofollow" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/dist/main.min.css" />
+
+    <title>Welcome - AFCON 2025 Marrakech</title>
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <main id="main" class="auth-container">
+      <div class="auth-card" style="max-width: 600px">
+        <h1 class="auth-title">Welcome to AFCON 2025! 🎉</h1>
+        <p class="text-center mb-3">
+          Let's personalize your experience in just a few steps
+        </p>
+
+        <div class="section">
+          <h2 style="font-size: 1.25rem; margin-bottom: 1rem">
+            Step 1: Choose Your Favorite Team
+          </h2>
+          <div class="form-group">
+            <select class="form-input" id="favorite-team">
+              <option value="">Select your team</option>
+              <option value="morocco">🇲🇦 Morocco</option>
+              <option value="egypt">🇪🇬 Egypt</option>
+              <option value="senegal">🇸🇳 Senegal</option>
+              <option value="nigeria">🇳🇬 Nigeria</option>
+              <option value="cameroon">🇨🇲 Cameroon</option>
+              <option value="ivory-coast">🇨🇮 Ivory Coast</option>
+              <option value="ghana">🇬🇭 Ghana</option>
+              <option value="algeria">🇩🇿 Algeria</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2 style="font-size: 1.25rem; margin-bottom: 1rem">
+            Step 2: Notification Preferences
+          </h2>
+          <div class="form-group">
+            <label class="form-label">
+              <input type="checkbox" checked /> Match reminders
+            </label>
+          </div>
+          <div class="form-group">
+            <label class="form-label">
+              <input type="checkbox" checked /> Score updates
+            </label>
+          </div>
+          <div class="form-group">
+            <label class="form-label">
+              <input type="checkbox" /> Tournament news
+            </label>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2 style="font-size: 1.25rem; margin-bottom: 1rem">
+            Step 3: What interests you most?
+          </h2>
+          <div class="form-group">
+            <label class="form-label">
+              <input type="checkbox" /> Live match commentary
+            </label>
+          </div>
+          <div class="form-group">
+            <label class="form-label">
+              <input type="checkbox" /> Player statistics
+            </label>
+          </div>
+          <div class="form-group">
+            <label class="form-label">
+              <input type="checkbox" /> Fan community
+            </label>
+          </div>
+          <div class="form-group">
+            <label class="form-label">
+              <input type="checkbox" /> Match predictions
+            </label>
+          </div>
+        </div>
+
+        <button
+          onclick="window.location.href='/dashboard.html'"
+          class="btn btn-primary"
+          style="width: 100%; margin-top: 1rem"
+        >
+          Complete Setup →
+        </button>
+
+        <a href="/dashboard.html" class="auth-link">Skip for now</a>
+      </div>
+    </main>
+
+    <script src="/src/js/utils/dom.js"></script>
+    <script src="/src/js/utils/fetchJSON.js"></script>
+    <script src="/src/js/router.js"></script>
+    <script src="/src/js/app.js"></script>
+  </body>
+</html>

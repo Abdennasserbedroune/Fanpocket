@@ -1,0 +1,55 @@
+{
+  "_schema": {
+    "description": "AFCON 2025 match data",
+    "fields": {
+      "id": "string - Unique identifier for the match",
+      "homeTeam": "string - Name of the home team",
+      "awayTeam": "string - Name of the away team",
+      "date": "ISO 8601 datetime string - Match date and time",
+      "venue": "string - Stadium/venue name",
+      "status": "string - Match status (scheduled|live|finished)",
+      "homeScore": "number|null - Home team score (null if not started)",
+      "awayScore": "number|null - Away team score (null if not started)",
+      "group": "string - Tournament group (e.g., 'A', 'B', 'C')",
+      "round": "string - Tournament round (e.g., 'group', 'quarter-final')"
+    }
+  },
+  "matches": [
+    {
+      "id": "match-001",
+      "homeTeam": "Morocco",
+      "awayTeam": "Egypt",
+      "date": "2025-01-15T20:00:00Z",
+      "venue": "Stade de Marrakech",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "group": "A",
+      "round": "group"
+    },
+    {
+      "id": "match-002",
+      "homeTeam": "Senegal",
+      "awayTeam": "Nigeria",
+      "date": "2025-01-16T17:00:00Z",
+      "venue": "Grand Stade de Casablanca",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "group": "B",
+      "round": "group"
+    },
+    {
+      "id": "match-003",
+      "homeTeam": "Cameroon",
+      "awayTeam": "Ivory Coast",
+      "date": "2025-01-17T20:00:00Z",
+      "venue": "Stade Prince Moulay Abdallah",
+      "status": "scheduled",
+      "homeScore": null,
+      "awayScore": null,
+      "group": "C",
+      "round": "group"
+    }
+  ]
+}
