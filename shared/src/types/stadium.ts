@@ -4,6 +4,7 @@ export interface Stadium {
   nameAr: string;
   nameFr: string;
   slug: string;
+  shortName: string;
   city: string;
   cityAr: string;
   cityFr: string;
@@ -28,6 +29,21 @@ export interface Stadium {
     publicTransport: boolean;
     wheelchairAccessible: boolean;
   };
+  transport?: Array<{
+    type: string;
+    description: string;
+    descriptionAr: string;
+    descriptionFr: string;
+  }>;
+  nearbyAttractions?: Array<{
+    name: string;
+    nameAr: string;
+    nameFr: string;
+    description: string;
+    descriptionAr: string;
+    descriptionFr: string;
+    distance: number;
+  }>;
   contactInfo?: {
     phone?: string;
     email?: string;

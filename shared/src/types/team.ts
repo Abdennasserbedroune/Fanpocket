@@ -4,7 +4,10 @@ export interface Team {
   nameAr: string;
   nameFr: string;
   slug: string;
+  shortCode: string;
+  flag: string;
   logo: string;
+  group?: 'A' | 'B' | 'C' | 'D' | 'E' | 'F';
   city: string;
   cityAr: string;
   cityFr: string;
@@ -24,6 +27,20 @@ export interface Team {
     twitter?: string;
     instagram?: string;
   };
+  stats?: {
+    wins: number;
+    draws: number;
+    losses: number;
+    goalsFor: number;
+    goalsAgainst: number;
+  };
+  squad?: Array<{
+    number: number;
+    name: string;
+    position: string;
+    age?: number;
+    club?: string;
+  }>;
   createdAt: Date;
   updatedAt: Date;
 }

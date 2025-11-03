@@ -1,8 +1,12 @@
-import mongoose, { Schema, Document } from 'mongoose';
+import mongoose, { Schema, Document, Types } from 'mongoose';
 import { User as IUser } from '@fanpocket/shared';
 
-export interface UserDocument extends Omit<IUser, 'id'>, Document {
+export interface UserDocument
+  extends Omit<IUser, 'id' | 'favoriteTeams' | 'favoriteStadiums'>,
+    Document {
   password: string;
+  favoriteTeams: Types.ObjectId[];
+  favoriteStadiums: Types.ObjectId[];
 }
 
 const UserSchema = new Schema<UserDocument>(
@@ -60,6 +64,11 @@ const UserSchema = new Schema<UserDocument>(
       enum: ['en', 'fr', 'ar'],
       default: 'en',
     },
+    fcmTokens: [
+      {
+        type: String,
+      },
+    ],
   },
   {
     timestamps: true,

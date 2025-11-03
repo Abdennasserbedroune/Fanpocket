@@ -1,7 +1,11 @@
-import mongoose, { Schema, Document } from 'mongoose';
+import mongoose, { Schema, Document, Types } from 'mongoose';
 import { Stadium as IStadium } from '@fanpocket/shared';
 
-export interface StadiumDocument extends Omit<IStadium, 'id'>, Document {}
+export interface StadiumDocument
+  extends Omit<IStadium, 'id' | 'homeTeams'>,
+    Document {
+  homeTeams: Types.ObjectId[];
+}
 
 const StadiumSchema = new Schema<StadiumDocument>(
   {
@@ -21,6 +25,10 @@ const StadiumSchema = new Schema<StadiumDocument>(
       type: String,
       required: true,
       unique: true,
+    },
+    shortName: {
+      type: String,
+      required: true,
     },
     city: {
       type: String,
@@ -79,6 +87,25 @@ const StadiumSchema = new Schema<StadiumDocument>(
       publicTransport: Boolean,
       wheelchairAccessible: Boolean,
     },
+    transport: [
+      {
+        type: { type: String },
+        description: String,
+        descriptionAr: String,
+        descriptionFr: String,
+      },
+    ],
+    nearbyAttractions: [
+      {
+        name: String,
+        nameAr: String,
+        nameFr: String,
+        description: String,
+        descriptionAr: String,
+        descriptionFr: String,
+        distance: Number,
+      },
+    ],
     contactInfo: {
       phone: String,
       email: String,
