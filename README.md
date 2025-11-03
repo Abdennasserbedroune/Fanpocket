@@ -1,257 +1,128 @@
 # Fanpocket
 
-A Next.js 14 web application for creators to share their content with the world. Built with TypeScript, Tailwind CSS, and Prisma ORM.
-
-## Features
-
-- 🚀 Next.js 14 with App Router
-- 📝 Markdown content rendering with syntax highlighting
-- 🎨 Tailwind CSS for styling
-- 🗄️ Prisma ORM with SQLite database
-- 🔍 Server-side search functionality
-- 📱 Fully responsive design
-- ♿ Accessible UI components
-- 🚫 No authentication required - all content is public
-
-## Tech Stack
-
-- **Framework**: Next.js 14 (App Router)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **Database**: SQLite (via Prisma ORM)
-- **Markdown**: Unified, Remark, Rehype
-- **Code Highlighting**: Highlight.js
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js 18+ and npm
-- Basic knowledge of terminal commands
-
-### Installation
-
-1. Clone the repository:
-
-```bash
-git clone <repository-url>
-cd fanpocket
-```
-
-2. Install dependencies:
-
-```bash
-npm install
-```
-
-3. Set up environment variables:
-
-```bash
-cp .env.example .env
-```
-
-The `.env` file contains:
-
-```
-DATABASE_URL="file:./prisma/dev.db"
-```
-
-4. Run database migrations:
-
-```bash
-npm run db:migrate
-```
-
-5. Seed the database with sample data:
-
-```bash
-npm run db:seed
-```
-
-6. Start the development server:
-
-```bash
-npm run dev
-```
-
-7. Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-## Available Scripts
-
-### Development
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run start` - Start production server
-- `npm run lint` - Run ESLint
-- `npm run format` - Format code with Prettier
-- `npm run typecheck` - Run TypeScript type checking
-
-### Database
-
-- `npm run db:generate` - Generate Prisma Client
-- `npm run db:migrate` - Create and apply migrations
-- `npm run db:reset` - Reset database (destructive)
-- `npm run db:seed` - Seed database with sample data
-- `npm run db:studio` - Open Prisma Studio (database GUI)
-
-### Content Management
-
-Add creators and posts via CLI:
-
-#### Add a Creator
-
-```bash
-npm run content:add:creator -- \
-  --name "Creator Name" \
-  --slug "creator-slug" \
-  --avatar "https://example.com/avatar.jpg" \
-  --bio "Creator bio..." \
-  --links '{"website":"https://example.com","twitter":"https://twitter.com/user"}'
-```
-
-#### Add a Post
-
-```bash
-npm run content:add:post -- \
-  --creator "creator-slug" \
-  --title "Post Title" \
-  --md "./path/to/content.md" \
-  --hero "https://example.com/hero.jpg" \
-  --publish
-```
+A Progressive Web App for Moroccan football fans to discover stadiums, track teams, follow matches, and connect with the local football culture.
 
 ## Project Structure
 
-```
-fanpocket/
-├── prisma/
-│   ├── schema.prisma          # Database schema
-│   ├── seed.ts               # Database seeding script
-│   └── migrations/           # Database migrations
-├── scripts/
-│   ├── add-creator.ts        # CLI to add creators
-│   └── add-post.ts           # CLI to add posts
-├── src/
-│   ├── app/                  # Next.js App Router pages
-│   │   ├── page.tsx         # Landing page
-│   │   ├── layout.tsx       # Root layout
-│   │   ├── not-found.tsx    # 404 page
-│   │   ├── about/           # About page
-│   │   ├── contact/         # Contact page
-│   │   ├── creators/        # Creators listing & detail
-│   │   └── posts/           # Post detail pages
-│   ├── components/          # React components
-│   │   ├── layout/          # Layout components (Navbar, Footer)
-│   │   ├── cards/           # Card components
-│   │   ├── EmptyState.tsx   # Empty state component
-│   │   └── MarkdownRenderer.tsx  # Markdown renderer
-│   └── lib/                 # Utility functions
-│       ├── prisma.ts        # Prisma client singleton
-│       └── markdown.ts      # Markdown processing
-├── public/                   # Static assets
-├── package.json             # Dependencies and scripts
-├── tsconfig.json            # TypeScript configuration
-├── next.config.ts           # Next.js configuration
-└── README.md               # This file
-```
+This is a monorepo containing:
 
-## Pages
+- **client/** - Next.js 14+ PWA with TypeScript, Tailwind CSS, and shadcn/ui
+- **server/** - Express.js API with TypeScript and MongoDB
+- **shared/** - Shared TypeScript types and constants
+- **docs/** - Project documentation
 
-- `/` - Landing page with featured creators and latest posts
-- `/creators` - List all creators with search functionality
-- `/creators/[slug]` - Creator profile with paginated posts
-- `/posts/[id]` - Individual post detail with rendered markdown
-- `/about` - About page
-- `/contact` - Contact page
+## Tech Stack
 
-## Database Schema
+### Client
 
-### Creator
+- Next.js 14+ (App Router)
+- TypeScript
+- Tailwind CSS
+- shadcn/ui components
+- next-pwa for Progressive Web App functionality
+- next-i18next for internationalization (en, fr, ar)
+- React Leaflet for maps
 
-- `id` (cuid) - Unique identifier
-- `slug` (string) - URL-friendly unique slug
-- `name` (string) - Display name
-- `avatarUrl` (string) - Avatar image URL
-- `bio` (string) - Biography
-- `links` (Json) - External links (website, social media, etc.)
-- `createdAt` (DateTime) - Creation timestamp
+### Server
 
-### Post
+- Express.js
+- TypeScript
+- MongoDB with Mongoose
+- JWT authentication
+- Firebase Cloud Messaging for notifications
 
-- `id` (cuid) - Unique identifier
-- `creatorId` (string) - Foreign key to Creator
-- `title` (string) - Post title
-- `content` (string) - Markdown content
-- `heroImageUrl` (string) - Hero image URL
-- `published` (boolean) - Publication status
-- `createdAt` (DateTime) - Creation timestamp
+### Development Tools
 
-## Development
+- ESLint for linting
+- Prettier for code formatting
+- Husky for git hooks
+- commitlint for commit message standards
+- Docker Compose for local database
 
-### Adding a New Feature
+## Prerequisites
 
-1. Create components in `src/components/`
-2. Add pages in `src/app/`
-3. Update database schema in `prisma/schema.prisma` if needed
-4. Run `npm run db:migrate` to apply schema changes
-5. Test locally with `npm run dev`
+- Node.js 20.11.0 (use `nvm use` to automatically switch)
+- Docker and Docker Compose
+- npm or yarn
 
-### Code Quality
+## Getting Started
 
-This project uses:
-
-- **ESLint** for linting
-- **Prettier** for code formatting
-- **TypeScript** for type safety
-
-Run checks before committing:
+### Installation
 
 ```bash
-npm run lint
-npm run typecheck
-npm run format
+# Install dependencies for all workspaces
+npm install
+
+# Start local MongoDB with Docker Compose
+npm run docker:up
 ```
 
-## Deployment
+### Development
 
-### Vercel (Recommended)
+```bash
+# Run both client and server concurrently
+npm run dev:all
 
-1. Push your code to GitHub
-2. Import project in Vercel
-3. Add environment variable: `DATABASE_URL`
-4. Deploy!
+# Or run them separately:
+npm run dev:client  # Client on http://localhost:3000
+npm run dev:server  # Server on http://localhost:5000
+```
 
-Note: For production, consider using PostgreSQL instead of SQLite.
+### Available Scripts
 
-### Other Platforms
+- `npm run dev:all` - Run client and server concurrently
+- `npm run dev:client` - Run only the client
+- `npm run dev:server` - Run only the server
+- `npm run build` - Build all workspaces
+- `npm run lint` - Lint all workspaces
+- `npm run format` - Format code with Prettier
+- `npm run typecheck` - Type check all workspaces
+- `npm run seed` - Seed the database with sample data
+- `npm run docker:up` - Start Docker services (MongoDB)
+- `npm run docker:down` - Stop Docker services
 
-The app can be deployed to any platform that supports Next.js:
+## Environment Variables
 
-- Netlify
-- AWS Amplify
-- DigitalOcean App Platform
-- Railway
-- Fly.io
+### Client (.env.local)
 
-## Contributing
+Copy `client/.env.local.example` to `client/.env.local` and configure:
 
-Contributions are welcome! Please:
+- `NEXT_PUBLIC_API_URL` - Backend API URL
+- `NEXT_PUBLIC_FIREBASE_CONFIG` - Firebase configuration
+- Map tile provider keys (if needed)
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Run linting and type checks
-5. Submit a pull request
+### Server (.env)
+
+Copy `server/.env.example` to `server/.env` and configure:
+
+- `PORT` - Server port
+- `MONGODB_URI` - MongoDB connection string
+- `JWT_SECRET` - Secret for JWT signing
+- `JWT_EXPIRE` - JWT expiration time
+- `CORS_ORIGIN` - Allowed CORS origin
+- Firebase Cloud Messaging credentials
+
+## Development Workflow
+
+1. Create a feature branch
+2. Make your changes
+3. Run `npm run lint` and `npm run typecheck` to ensure code quality
+4. Commit with conventional commit messages (enforced by commitlint)
+5. Push and create a pull request
+
+## Code Quality
+
+- **Pre-commit**: Runs lint-staged to format and lint changed files
+- **Commit-msg**: Validates commit message format
+- **Conventional Commits**: feat, fix, docs, style, refactor, test, chore, etc.
+
+## Database
+
+Local MongoDB runs via Docker Compose:
+
+- MongoDB: `mongodb://admin:admin123@localhost:27017/fanpocket`
+- Mongo Express UI: http://localhost:8081
 
 ## License
 
-MIT License - see LICENSE file for details.
-
-## Support
-
-For questions or issues, please open an issue on GitHub or contact us via the contact page.
-
----
-
-Built with ❤️ using Next.js, TypeScript, and Tailwind CSS.
+See LICENSE file for details.
