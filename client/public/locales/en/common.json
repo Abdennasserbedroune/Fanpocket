@@ -1,0 +1,21 @@
+{
+  "appName": "Fanpocket",
+  "nav": {
+    "home": "Home",
+    "map": "Map",
+    "matches": "Matches",
+    "stadiums": "Stadiums",
+    "teams": "Teams",
+    "profile": "Profile"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "comingSoon": "Coming soon"
+  }
+}

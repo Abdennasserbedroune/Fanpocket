@@ -1,9 +1,12 @@
 node_modules
 dist
+build
+.next
+out
 *.min.js
 *.min.css
 package-lock.json
-public/dist
-public/data
-public/src
-config.injected.js
+**/public/sw.js
+**/public/workbox-*.js
+**/public/worker-*.js
+coverage
