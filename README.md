@@ -1,253 +1,257 @@
-# AFCON 2025 Marrakech MVP
+# Fanpocket
 
-A production-ready vanilla JavaScript web application for the Africa Cup of Nations 2025 hosted in Morocco. This is a fan engagement platform providing live updates, match schedules, team statistics, and community features.
+A Next.js 14 web application for creators to share their content with the world. Built with TypeScript, Tailwind CSS, and Prisma ORM.
 
-## 🏗️ Project Structure
+## Features
 
-```
-├── public/                 # Public HTML pages
-│   ├── index.html         # Landing page
-│   ├── login.html         # Login page
-│   ├── register.html      # Registration page
-│   ├── reset.html         # Password reset page
-│   ├── dashboard.html     # User dashboard
-│   ├── profile.html       # User profile
-│   ├── onboarding.html    # Onboarding flow
-│   └── favicon.svg        # Favicon
-├── src/
-│   ├── css/
-│   │   └── main.css       # Main stylesheet (includes normalize.css)
-│   ├── js/
-│   │   ├── app.js         # Main application entry point
-│   │   ├── router.js      # Hash-based router
-│   │   └── utils/
-│   │       ├── dom.js     # DOM manipulation utilities
-│   │       └── fetchJSON.js # API utilities
-│   └── components/        # Reusable components (future)
-├── data/                  # JSON data stubs
-│   ├── matches.json       # Match schedule and results
-│   ├── updates.json       # Real-time updates and news
-│   └── teams_stats.json   # Team statistics
-├── images/                # Images and photos
-├── icons/                 # Icon assets
-├── dist/                  # Build output (minified assets)
-└── vercel.json           # Vercel deployment config
-```
+- 🚀 Next.js 14 with App Router
+- 📝 Markdown content rendering with syntax highlighting
+- 🎨 Tailwind CSS for styling
+- 🗄️ Prisma ORM with SQLite database
+- 🔍 Server-side search functionality
+- 📱 Fully responsive design
+- ♿ Accessible UI components
+- 🚫 No authentication required - all content is public
 
-## 🎨 Design System
+## Tech Stack
 
-### Morocco-Inspired Brand Colors
+- **Framework**: Next.js 14 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Database**: SQLite (via Prisma ORM)
+- **Markdown**: Unified, Remark, Rehype
+- **Code Highlighting**: Highlight.js
 
-- **Primary (Red)**: `#c1272d` - Morocco flag red
-- **Secondary (Green)**: `#006233` - Morocco flag green
-- **Accent (Gold)**: `#d4af37` - Moroccan gold
-
-### CSS Variables
-
-All colors, spacing, and typography are defined as CSS custom properties in `src/css/main.css` for easy theming and consistency.
-
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
-- Node.js 16+ and npm
-- Firebase project (see `FIREBASE_SETUP.md`)
+- Node.js 18+ and npm
+- Basic knowledge of terminal commands
 
 ### Installation
+
+1. Clone the repository:
+
+```bash
+git clone <repository-url>
+cd fanpocket
+```
+
+2. Install dependencies:
 
 ```bash
 npm install
 ```
 
-### Configuration
+3. Set up environment variables:
 
-1. Copy `.env.example` to `.env`:
+```bash
+cp .env.example .env
+```
 
-   ```bash
-   cp .env.example .env
-   ```
+The `.env` file contains:
 
-2. Fill in your Firebase configuration in `.env` (see `FIREBASE_SETUP.md` for details)
+```
+DATABASE_URL="file:./prisma/dev.db"
+```
 
-3. Update `src/js/config.js` with your Firebase values (or use the build script)
+4. Run database migrations:
 
-### Development
+```bash
+npm run db:migrate
+```
+
+5. Seed the database with sample data:
+
+```bash
+npm run db:seed
+```
+
+6. Start the development server:
 
 ```bash
 npm run dev
 ```
 
-This will start a local development server at `http://localhost:8080`.
+7. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-**Note:** For Firebase to work locally, you need to manually update `src/js/config.js` with your Firebase credentials, or set up environment variable injection through your development environment.
+## Available Scripts
 
-### Build
+### Development
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+- `npm run format` - Format code with Prettier
+- `npm run typecheck` - Run TypeScript type checking
+
+### Database
+
+- `npm run db:generate` - Generate Prisma Client
+- `npm run db:migrate` - Create and apply migrations
+- `npm run db:reset` - Reset database (destructive)
+- `npm run db:seed` - Seed database with sample data
+- `npm run db:studio` - Open Prisma Studio (database GUI)
+
+### Content Management
+
+Add creators and posts via CLI:
+
+#### Add a Creator
 
 ```bash
-npm run build
+npm run content:add:creator -- \
+  --name "Creator Name" \
+  --slug "creator-slug" \
+  --avatar "https://example.com/avatar.jpg" \
+  --bio "Creator bio..." \
+  --links '{"website":"https://example.com","twitter":"https://twitter.com/user"}'
 ```
 
-This will:
-
-1. Minify CSS using LightningCSS
-2. Minify and bundle JavaScript using Terser
-3. Output to the `dist/` directory
-
-### Linting & Formatting
+#### Add a Post
 
 ```bash
-# Check formatting
-npm run lint
+npm run content:add:post -- \
+  --creator "creator-slug" \
+  --title "Post Title" \
+  --md "./path/to/content.md" \
+  --hero "https://example.com/hero.jpg" \
+  --publish
+```
 
-# Auto-format code
+## Project Structure
+
+```
+fanpocket/
+├── prisma/
+│   ├── schema.prisma          # Database schema
+│   ├── seed.ts               # Database seeding script
+│   └── migrations/           # Database migrations
+├── scripts/
+│   ├── add-creator.ts        # CLI to add creators
+│   └── add-post.ts           # CLI to add posts
+├── src/
+│   ├── app/                  # Next.js App Router pages
+│   │   ├── page.tsx         # Landing page
+│   │   ├── layout.tsx       # Root layout
+│   │   ├── not-found.tsx    # 404 page
+│   │   ├── about/           # About page
+│   │   ├── contact/         # Contact page
+│   │   ├── creators/        # Creators listing & detail
+│   │   └── posts/           # Post detail pages
+│   ├── components/          # React components
+│   │   ├── layout/          # Layout components (Navbar, Footer)
+│   │   ├── cards/           # Card components
+│   │   ├── EmptyState.tsx   # Empty state component
+│   │   └── MarkdownRenderer.tsx  # Markdown renderer
+│   └── lib/                 # Utility functions
+│       ├── prisma.ts        # Prisma client singleton
+│       └── markdown.ts      # Markdown processing
+├── public/                   # Static assets
+├── package.json             # Dependencies and scripts
+├── tsconfig.json            # TypeScript configuration
+├── next.config.ts           # Next.js configuration
+└── README.md               # This file
+```
+
+## Pages
+
+- `/` - Landing page with featured creators and latest posts
+- `/creators` - List all creators with search functionality
+- `/creators/[slug]` - Creator profile with paginated posts
+- `/posts/[id]` - Individual post detail with rendered markdown
+- `/about` - About page
+- `/contact` - Contact page
+
+## Database Schema
+
+### Creator
+
+- `id` (cuid) - Unique identifier
+- `slug` (string) - URL-friendly unique slug
+- `name` (string) - Display name
+- `avatarUrl` (string) - Avatar image URL
+- `bio` (string) - Biography
+- `links` (Json) - External links (website, social media, etc.)
+- `createdAt` (DateTime) - Creation timestamp
+
+### Post
+
+- `id` (cuid) - Unique identifier
+- `creatorId` (string) - Foreign key to Creator
+- `title` (string) - Post title
+- `content` (string) - Markdown content
+- `heroImageUrl` (string) - Hero image URL
+- `published` (boolean) - Publication status
+- `createdAt` (DateTime) - Creation timestamp
+
+## Development
+
+### Adding a New Feature
+
+1. Create components in `src/components/`
+2. Add pages in `src/app/`
+3. Update database schema in `prisma/schema.prisma` if needed
+4. Run `npm run db:migrate` to apply schema changes
+5. Test locally with `npm run dev`
+
+### Code Quality
+
+This project uses:
+
+- **ESLint** for linting
+- **Prettier** for code formatting
+- **TypeScript** for type safety
+
+Run checks before committing:
+
+```bash
+npm run lint
+npm run typecheck
 npm run format
 ```
 
-## 📊 Data Schema
-
-### matches.json
-
-```json
-{
-  "id": "string - Unique match identifier",
-  "homeTeam": "string - Home team name",
-  "awayTeam": "string - Away team name",
-  "date": "ISO 8601 datetime",
-  "venue": "string - Stadium name",
-  "status": "scheduled|live|finished",
-  "homeScore": "number|null",
-  "awayScore": "number|null",
-  "group": "string - Tournament group",
-  "round": "string - Tournament round"
-}
-```
-
-### updates.json
-
-```json
-{
-  "id": "string - Unique update identifier",
-  "type": "news|goal|card|substitution|match-event",
-  "title": "string - Update headline",
-  "content": "string - Detailed content",
-  "timestamp": "ISO 8601 datetime",
-  "matchId": "string|null - Related match",
-  "priority": "high|normal|low"
-}
-```
-
-### teams_stats.json
-
-```json
-{
-  "id": "string - Unique team identifier",
-  "name": "string - Team name",
-  "code": "string - ISO 3166-1 alpha-3 code",
-  "group": "string - Tournament group",
-  "stats": {
-    "played": "number",
-    "wins": "number",
-    "draws": "number",
-    "losses": "number",
-    "goalsFor": "number",
-    "goalsAgainst": "number",
-    "goalDifference": "number",
-    "points": "number"
-  },
-  "form": ["W|D|L"],
-  "ranking": "number"
-}
-```
-
-## ♿ Accessibility
-
-- Skip link for keyboard navigation
-- Focus styles for all interactive elements
-- Semantic HTML structure
-- ARIA labels where needed
-- Mobile-first responsive design
-
-## 🔧 Tech Stack
-
-- **HTML5** - Semantic markup
-- **CSS3** - Custom properties, Grid, Flexbox
-- **Vanilla JavaScript** - ES6+ modules
-- **Firebase** - Authentication and Firestore database
-- **LightningCSS** - Fast CSS processing and minification
-- **Terser** - JavaScript minification
-- **http-server** - Local development server
-- **Prettier** - Code formatting
-
-## 🚢 Deployment
+## Deployment
 
 ### Vercel (Recommended)
 
-The project is configured for Vercel deployment:
+1. Push your code to GitHub
+2. Import project in Vercel
+3. Add environment variable: `DATABASE_URL`
+4. Deploy!
 
-```bash
-vercel
-```
+Note: For production, consider using PostgreSQL instead of SQLite.
 
-Configuration is in `vercel.json`. Preview deployments are automatically created for pull requests.
+### Other Platforms
 
-### Alternative: Netlify
+The app can be deployed to any platform that supports Next.js:
 
-Create a `netlify.toml`:
+- Netlify
+- AWS Amplify
+- DigitalOcean App Platform
+- Railway
+- Fly.io
 
-```toml
-[build]
-  command = "npm run build"
-  publish = "public"
+## Contributing
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-```
-
-## 📦 Zero-Cost OSS Tools Used
-
-- **normalize.css** (MIT) - CSS reset
-- **LightningCSS** (MPL-2.0) - CSS processing
-- **Terser** (BSD-2-Clause) - JS minification
-- **Prettier** (MIT) - Code formatting
-- **http-server** (MIT) - Dev server
-
-## 🎯 Performance
-
-Target Lighthouse scores:
-
-- Performance: >= 80
-- Accessibility: >= 90
-- Best Practices: >= 90
-- SEO: >= 90
-
-## 📝 License
-
-MIT
-
-## 📚 Documentation
-
-- **[FIREBASE_SETUP.md](./FIREBASE_SETUP.md)** - Complete Firebase setup guide
-- **[TESTING_FIREBASE.md](./TESTING_FIREBASE.md)** - Testing authentication and security rules
-- **[DEPLOYMENT.md](./DEPLOYMENT.md)** - Deployment guide for Vercel/Netlify
-- **[CONTRIBUTING.md](./CONTRIBUTING.md)** - Contributing guidelines
-
-## 🔐 Security
-
-- Firestore security rules restrict access to user data
-- Authentication required for protected routes
-- Environment variables for sensitive configuration
-- See `firestore.rules` for detailed security rules
-
-## 🤝 Contributing
+Contributions are welcome! Please:
 
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
-4. Run `npm run lint` and `npm run build`
+4. Run linting and type checks
 5. Submit a pull request
+
+## License
+
+MIT License - see LICENSE file for details.
+
+## Support
+
+For questions or issues, please open an issue on GitHub or contact us via the contact page.
 
 ---
 
-Built with ❤️ for AFCON 2025 🇲🇦⚽
+Built with ❤️ using Next.js, TypeScript, and Tailwind CSS.
