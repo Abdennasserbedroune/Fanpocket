@@ -1,9 +1,12 @@
 export interface Match {
   id: string;
+  matchNumber: number;
   homeTeam: string;
   awayTeam: string;
   stadium: string;
   competition: string;
+  stage: 'group' | 'r16' | 'quarter' | 'semi' | 'final';
+  group?: 'A' | 'B' | 'C' | 'D' | 'E' | 'F';
   dateTime: Date;
   status: 'scheduled' | 'live' | 'finished' | 'postponed' | 'cancelled';
   score?: {
@@ -32,6 +35,13 @@ export interface Match {
     condition: string;
     temperature: number;
   };
+  events?: Array<{
+    type: string;
+    minute: number;
+    player: string;
+    team: string;
+    description: string;
+  }>;
   createdAt: Date;
   updatedAt: Date;
 }

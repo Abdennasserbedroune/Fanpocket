@@ -12,6 +12,7 @@ export interface User {
     stadiumEvents: boolean;
   };
   locale: 'en' | 'fr' | 'ar';
+  fcmTokens: string[];
   createdAt: Date;
   updatedAt: Date;
 }
