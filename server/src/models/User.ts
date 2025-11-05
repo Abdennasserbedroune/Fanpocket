@@ -1,8 +1,16 @@
 import mongoose, { Schema, Document } from 'mongoose';
 import { User as IUser } from '@fanpocket/shared';
 
+export interface RefreshToken {
+  token: string;
+  createdAt: Date;
+  userAgent?: string;
+  ip?: string;
+}
+
 export interface UserDocument extends Omit<IUser, 'id'>, Document {
   password: string;
+  refreshTokens: RefreshToken[];
 }
 
 const UserSchema = new Schema<UserDocument>(
@@ -13,17 +21,32 @@ const UserSchema = new Schema<UserDocument>(
       unique: true,
       lowercase: true,
       trim: true,
+      index: true,
     },
     username: {
       type: String,
       required: true,
       unique: true,
       trim: true,
+      index: true,
     },
     password: {
       type: String,
       required: true,
+      select: false,
     },
+    refreshTokens: [{
+      token: {
+        type: String,
+        required: true,
+      },
+      createdAt: {
+        type: Date,
+        default: Date.now,
+      },
+      userAgent: String,
+      ip: String,
+    }],
     displayName: {
       type: String,
       required: true,
@@ -65,8 +88,5 @@ const UserSchema = new Schema<UserDocument>(
     timestamps: true,
   }
 );
-
-UserSchema.index({ email: 1 });
-UserSchema.index({ username: 1 });
 
 export const User = mongoose.model<UserDocument>('User', UserSchema);

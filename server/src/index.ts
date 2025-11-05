@@ -6,7 +6,10 @@ import { config } from './config';
 import { connectDatabase } from './config/database';
 import { errorHandler, notFound } from './middleware/errorHandler';
 import { generalLimiter } from './middleware/rateLimiter';
+import { csrfProtection } from './middleware/csrf';
 import healthRouter from './routes/health';
+import authRouter from './routes/auth';
+import protectedRouter from './routes/protected';
 
 const app: Application = express();
 
@@ -28,7 +31,12 @@ const startServer = async () => {
 
   app.use(generalLimiter);
 
+  // Apply CSRF protection to all API routes
+  app.use('/api', csrfProtection);
+
   app.use('/api', healthRouter);
+  app.use('/api/auth', authRouter);
+  app.use('/api/protected', protectedRouter);
 
   app.use(notFound);
   app.use(errorHandler);
