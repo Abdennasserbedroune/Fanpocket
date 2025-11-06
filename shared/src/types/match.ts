@@ -1,9 +1,18 @@
 export interface Match {
   id: string;
-  homeTeam: string;
-  awayTeam: string;
+  matchNumber: number;
+  homeTeam?: string;
+  awayTeam?: string;
   stadium: string;
-  competition: string;
+  competition?: string;
+  stage:
+    | 'group'
+    | 'round_of_16'
+    | 'quarter_final'
+    | 'semi_final'
+    | 'third_place'
+    | 'final';
+  group?: string;
   dateTime: Date;
   status: 'scheduled' | 'live' | 'finished' | 'postponed' | 'cancelled';
   score?: {
@@ -14,6 +23,13 @@ export interface Match {
       away: number;
     };
   };
+  events?: Array<{
+    type: 'goal' | 'yellow_card' | 'red_card' | 'substitution';
+    minute: number;
+    team: string;
+    player: string;
+    details?: string;
+  }>;
   attendance?: number;
   ticketInfo?: {
     available: boolean;
@@ -38,8 +54,8 @@ export interface Match {
 
 export interface MatchSummary {
   id: string;
-  homeTeam: string;
-  awayTeam: string;
+  homeTeam?: string;
+  awayTeam?: string;
   stadium: string;
   dateTime: Date;
   status: Match['status'];
@@ -47,15 +63,15 @@ export interface MatchSummary {
 }
 
 export interface MatchWithDetails extends Match {
-  homeTeamData: {
+  homeTeamData?: {
     id: string;
     name: string;
-    logo: string;
+    logo?: string;
   };
-  awayTeamData: {
+  awayTeamData?: {
     id: string;
     name: string;
-    logo: string;
+    logo?: string;
   };
   stadiumData: {
     id: string;

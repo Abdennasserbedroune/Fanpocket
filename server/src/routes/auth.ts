@@ -37,7 +37,8 @@ const formatUserResponse = (user: any) => {
 // Register
 router.post('/register', async (req, res) => {
   try {
-    const { email, username, password, displayName, locale }: CreateUserDto = req.body;
+    const { email, username, password, displayName, locale }: CreateUserDto =
+      req.body;
 
     // Check if user already exists
     const existingUser = await User.findOne({
@@ -46,7 +47,10 @@ router.post('/register', async (req, res) => {
 
     if (existingUser) {
       return res.status(400).json({
-        message: existingUser.email === email ? 'Email already exists' : 'Username already exists',
+        message:
+          existingUser.email === email
+            ? 'Email already exists'
+            : 'Username already exists',
       });
     }
 
@@ -71,12 +75,8 @@ router.post('/register', async (req, res) => {
     // Set refresh token cookie
     setRefreshTokenCookie(res, refreshToken);
 
-    // Return response without password
-    const userResponse = user.toJSON();
-    delete (userResponse as any).password;
-
     const authResponse: AuthResponse = {
-      user: userResponse,
+      user: formatUserResponse(user),
       token,
     };
 
@@ -111,12 +111,8 @@ router.post('/login', async (req, res) => {
     // Set refresh token cookie
     setRefreshTokenCookie(res, refreshToken);
 
-    // Return response without password
-    const userResponse = user.toJSON();
-    delete (userResponse as any).password;
-
     const authResponse: AuthResponse = {
-      user: userResponse,
+      user: formatUserResponse(user),
       token,
     };
 
@@ -137,7 +133,7 @@ router.post('/logout', (req, res) => {
 router.get('/me', async (req, res) => {
   try {
     const token = req.headers.authorization?.replace('Bearer ', '');
-    
+
     if (!token) {
       return res.status(401).json({ message: 'No token provided' });
     }
@@ -168,7 +164,9 @@ router.post('/refresh', async (req, res) => {
       return res.status(401).json({ message: 'No refresh token provided' });
     }
 
-    const decoded = jwt.verify(refreshToken, config.jwt.secret) as { userId: string };
+    const decoded = jwt.verify(refreshToken, config.jwt.secret) as {
+      userId: string;
+    };
     const user = await User.findById(decoded.userId);
 
     if (!user) {
@@ -182,12 +180,8 @@ router.post('/refresh', async (req, res) => {
     // Set new refresh token cookie
     setRefreshTokenCookie(res, newRefreshToken);
 
-    // Return response without password
-    const userResponse = user.toJSON();
-    delete (userResponse as any).password;
-
     const authResponse: AuthResponse = {
-      user: userResponse,
+      user: formatUserResponse(user),
       token,
     };
 

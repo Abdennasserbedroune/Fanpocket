@@ -3,6 +3,7 @@ export interface Stadium {
   name: string;
   nameAr: string;
   nameFr: string;
+  shortName?: string;
   slug: string;
   city: string;
   cityAr: string;
@@ -23,6 +24,8 @@ export interface Stadium {
   descriptionAr?: string;
   descriptionFr?: string;
   facilities: string[];
+  transport?: string[];
+  nearbyAttractions?: string[];
   accessibility: {
     parking: boolean;
     publicTransport: boolean;

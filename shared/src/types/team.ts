@@ -4,7 +4,10 @@ export interface Team {
   nameAr: string;
   nameFr: string;
   slug: string;
-  logo: string;
+  shortCode: string;
+  flagUrl: string;
+  group: string;
+  logo?: string;
   city: string;
   cityAr: string;
   cityFr: string;
@@ -14,7 +17,23 @@ export interface Team {
     primary: string;
     secondary: string;
   };
-  league: string;
+  league?: string;
+  stats?: {
+    played: number;
+    won: number;
+    drawn: number;
+    lost: number;
+    goalsFor: number;
+    goalsAgainst: number;
+    points: number;
+  };
+  squad?: Array<{
+    number: number;
+    name: string;
+    position: string;
+    age: number;
+    club: string;
+  }>;
   description?: string;
   descriptionAr?: string;
   descriptionFr?: string;
