@@ -69,4 +69,11 @@ const UserSchema = new Schema<UserDocument>(
 UserSchema.index({ email: 1 });
 UserSchema.index({ username: 1 });
 
+// Exclude password from JSON output
+UserSchema.methods.toJSON = function() {
+  const userObject = this.toObject();
+  delete userObject.password;
+  return userObject;
+};
+
 export const User = mongoose.model<UserDocument>('User', UserSchema);
