@@ -8,6 +8,9 @@ import { errorHandler, notFound } from './middleware/errorHandler';
 import { generalLimiter } from './middleware/rateLimiter';
 import healthRouter from './routes/health';
 import authRouter from './routes/auth';
+import teamsRouter from './routes/teams';
+import stadiumsRouter from './routes/stadiums';
+import matchesRouter from './routes/matches';
 
 const app: Application = express();
 
@@ -31,6 +34,9 @@ const startServer = async () => {
 
   app.use('/api', healthRouter);
   app.use('/api/auth', authRouter);
+  app.use('/api/teams', teamsRouter);
+  app.use('/api/stadiums', stadiumsRouter);
+  app.use('/api/matches', matchesRouter);
 
   app.use(notFound);
   app.use(errorHandler);

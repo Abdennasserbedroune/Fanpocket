@@ -17,6 +17,7 @@ const StadiumSchema = new Schema<StadiumDocument>(
       type: String,
       required: true,
     },
+    shortName: String,
     slug: {
       type: String,
       required: true,
@@ -74,6 +75,8 @@ const StadiumSchema = new Schema<StadiumDocument>(
     descriptionAr: String,
     descriptionFr: String,
     facilities: [String],
+    transport: [String],
+    nearbyAttractions: [String],
     accessibility: {
       parking: Boolean,
       publicTransport: Boolean,

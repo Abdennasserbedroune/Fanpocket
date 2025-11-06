@@ -5,25 +5,43 @@ export interface MatchDocument extends Omit<IMatch, 'id'>, Document {}
 
 const MatchSchema = new Schema<MatchDocument>(
   {
-    homeTeam: {
-      type: Schema.Types.ObjectId,
-      ref: 'Team',
+    matchNumber: {
+      type: Number,
       required: true,
+    },
+    homeTeam: {
+      type: Schema.Types.ObjectId as any,
+      ref: 'Team',
+      required: function (this: any) {
+        return this.stage === 'group';
+      },
     },
     awayTeam: {
-      type: Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId as any,
       ref: 'Team',
-      required: true,
+      required: function (this: any) {
+        return this.stage === 'group';
+      },
     },
     stadium: {
-      type: Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId as any,
       ref: 'Stadium',
       required: true,
     },
-    competition: {
+    competition: String,
+    stage: {
       type: String,
+      enum: [
+        'group',
+        'round_of_16',
+        'quarter_final',
+        'semi_final',
+        'third_place',
+        'final',
+      ],
       required: true,
     },
+    group: String,
     dateTime: {
       type: Date,
       required: true,
@@ -41,6 +59,19 @@ const MatchSchema = new Schema<MatchDocument>(
         away: Number,
       },
     },
+    events: [
+      {
+        type: {
+          type: String,
+          enum: ['goal', 'yellow_card', 'red_card', 'substitution'],
+          required: true,
+        },
+        minute: { type: Number, required: true },
+        team: { type: String, required: true },
+        player: { type: String, required: true },
+        details: String,
+      },
+    ],
     attendance: Number,
     ticketInfo: {
       available: Boolean,
@@ -65,8 +96,13 @@ const MatchSchema = new Schema<MatchDocument>(
   }
 );
 
+MatchSchema.index({ matchNumber: 1 }, { unique: true });
 MatchSchema.index({ dateTime: 1 });
+MatchSchema.index({ stage: 1 });
+MatchSchema.index({ group: 1 });
 MatchSchema.index({ status: 1 });
-MatchSchema.index({ homeTeam: 1, awayTeam: 1 });
+MatchSchema.index({ homeTeam: 1 });
+MatchSchema.index({ awayTeam: 1 });
+MatchSchema.index({ stadium: 1 });
 
 export const Match = mongoose.model<MatchDocument>('Match', MatchSchema);

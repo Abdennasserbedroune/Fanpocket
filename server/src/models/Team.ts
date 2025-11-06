@@ -22,10 +22,19 @@ const TeamSchema = new Schema<TeamDocument>(
       required: true,
       unique: true,
     },
-    logo: {
+    shortCode: {
       type: String,
       required: true,
     },
+    flagUrl: {
+      type: String,
+      required: true,
+    },
+    group: {
+      type: String,
+      required: true,
+    },
+    logo: String,
     city: {
       type: String,
       required: true,
@@ -47,10 +56,25 @@ const TeamSchema = new Schema<TeamDocument>(
       primary: String,
       secondary: String,
     },
-    league: {
-      type: String,
-      required: true,
+    league: String,
+    stats: {
+      played: { type: Number, default: 0 },
+      won: { type: Number, default: 0 },
+      drawn: { type: Number, default: 0 },
+      lost: { type: Number, default: 0 },
+      goalsFor: { type: Number, default: 0 },
+      goalsAgainst: { type: Number, default: 0 },
+      points: { type: Number, default: 0 },
     },
+    squad: [
+      {
+        number: Number,
+        name: String,
+        position: String,
+        age: Number,
+        club: String,
+      },
+    ],
     description: String,
     descriptionAr: String,
     descriptionFr: String,
@@ -67,6 +91,8 @@ const TeamSchema = new Schema<TeamDocument>(
 );
 
 TeamSchema.index({ slug: 1 });
+TeamSchema.index({ shortCode: 1 }, { unique: true });
+TeamSchema.index({ group: 1 });
 TeamSchema.index({ city: 1 });
 
 export const Team = mongoose.model<TeamDocument>('Team', TeamSchema);
