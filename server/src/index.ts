@@ -7,6 +7,7 @@ import { connectDatabase } from './config/database';
 import { errorHandler, notFound } from './middleware/errorHandler';
 import { generalLimiter } from './middleware/rateLimiter';
 import healthRouter from './routes/health';
+import authRouter from './routes/auth';
 
 const app: Application = express();
 
@@ -29,6 +30,7 @@ const startServer = async () => {
   app.use(generalLimiter);
 
   app.use('/api', healthRouter);
+  app.use('/api/auth', authRouter);
 
   app.use(notFound);
   app.use(errorHandler);
