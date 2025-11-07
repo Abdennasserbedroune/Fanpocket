@@ -90,8 +90,6 @@ const TeamSchema = new Schema<TeamDocument>(
   }
 );
 
-TeamSchema.index({ slug: 1 });
-TeamSchema.index({ shortCode: 1 }, { unique: true });
 TeamSchema.index({ group: 1 });
 TeamSchema.index({ city: 1 });
 

@@ -66,8 +66,7 @@ const UserSchema = new Schema<UserDocument>(
   }
 );
 
-UserSchema.index({ email: 1 });
-UserSchema.index({ username: 1 });
+UserSchema.index({ favoriteTeams: 1 });
 
 // Exclude password from JSON output
 UserSchema.methods.toJSON = function() {
