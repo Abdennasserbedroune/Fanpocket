@@ -2,11 +2,7 @@ import { MapView } from '@/components/MapView';
 
 export default function MapPage() {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <h1 className="text-3xl font-bold text-gray-900 mb-6">Stadium Map</h1>
-      <p className="text-gray-600 mb-6">
-        Explore stadiums across Morocco on an interactive map
-      </p>
+    <div className="relative flex min-h-[calc(100vh-4rem)] w-full flex-1 flex-col bg-gradient-to-br from-green-50/80 via-white to-emerald-50/60">
       <MapView />
     </div>
   );
