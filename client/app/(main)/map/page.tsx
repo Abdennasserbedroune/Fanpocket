@@ -1,3 +1,6 @@
+import 'leaflet/dist/leaflet.css';
+import 'leaflet.markercluster/dist/MarkerCluster.css';
+import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
 import { MapView } from '@/components/MapView';
 
 export default function MapPage() {
