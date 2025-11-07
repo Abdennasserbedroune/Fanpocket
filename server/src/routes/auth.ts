@@ -155,6 +155,61 @@ router.get('/me', async (req, res) => {
   }
 });
 
+// Update current user profile
+router.patch('/me', async (req, res) => {
+  try {
+    const token = req.headers.authorization?.replace('Bearer ', '');
+
+    if (!token) {
+      return res.status(401).json({ message: 'No token provided' });
+    }
+
+    const decoded = jwt.verify(token, config.jwt.secret) as { userId: string };
+    const user = await User.findById(decoded.userId);
+
+    if (!user) {
+      return res.status(401).json({ message: 'Invalid token' });
+    }
+
+    const { displayName, email, locale, preferences } = req.body;
+
+    // Validate email if provided
+    if (email && email !== user.email) {
+      const existingUser = await User.findOne({ email });
+      if (existingUser) {
+        return res.status(400).json({ message: 'Email already exists' });
+      }
+      user.email = email;
+    }
+
+    // Validate locale if provided
+    if (locale && !['en', 'fr', 'ar'].includes(locale)) {
+      return res.status(400).json({ message: 'Invalid locale. Must be en, fr, or ar' });
+    }
+
+    // Update fields if provided
+    if (displayName !== undefined) user.displayName = displayName;
+    if (locale !== undefined) user.locale = locale;
+    if (preferences !== undefined) {
+      // Merge preferences with existing ones
+      user.notificationPreferences = {
+        ...user.notificationPreferences,
+        ...preferences,
+      };
+    }
+
+    await user.save();
+
+    const userResponse = user.toJSON();
+    delete (userResponse as any).password;
+
+    res.json(userResponse);
+  } catch (error) {
+    console.error('Update user error:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
 // Refresh token
 router.post('/refresh', async (req, res) => {
   try {

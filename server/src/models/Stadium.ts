@@ -94,7 +94,6 @@ const StadiumSchema = new Schema<StadiumDocument>(
 );
 
 StadiumSchema.index({ location: '2dsphere' });
-StadiumSchema.index({ slug: 1 });
 StadiumSchema.index({ city: 1 });
 
 export const Stadium = mongoose.model<StadiumDocument>(

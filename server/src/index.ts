@@ -12,6 +12,7 @@ import teamsRouter from './routes/teams';
 import stadiumsRouter from './routes/stadiums';
 import matchesRouter from './routes/matches';
 import geocodeRouter from './routes/geocode';
+import favoritesRouter from './routes/favorites';
 
 const app: Application = express();
 
@@ -35,6 +36,7 @@ const startServer = async () => {
 
   app.use('/api', healthRouter);
   app.use('/api/auth', authRouter);
+  app.use('/api/favorites', favoritesRouter);
   app.use('/api/teams', teamsRouter);
   app.use('/api/stadiums', stadiumsRouter);
   app.use('/api/matches', matchesRouter);
