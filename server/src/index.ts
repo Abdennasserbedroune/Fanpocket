@@ -11,6 +11,7 @@ import authRouter from './routes/auth';
 import teamsRouter from './routes/teams';
 import stadiumsRouter from './routes/stadiums';
 import matchesRouter from './routes/matches';
+import geocodeRouter from './routes/geocode';
 
 const app: Application = express();
 
@@ -37,6 +38,7 @@ const startServer = async () => {
   app.use('/api/teams', teamsRouter);
   app.use('/api/stadiums', stadiumsRouter);
   app.use('/api/matches', matchesRouter);
+  app.use('/api/geocode', geocodeRouter);
 
   app.use(notFound);
   app.use(errorHandler);
